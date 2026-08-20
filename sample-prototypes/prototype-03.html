@@ -1,0 +1,3008 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>علی هاشمیان — منتورا | مشاوره و آموزش کنکور</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root{
+  --font: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+  --primary:#4f46e5;
+  --primary-600:#4338ca;
+  --primary-700:#3730a3;
+  --primary-50:#eef2ff;
+  --primary-100:#e0e7ff;
+  --accent:#f59e0b;
+  --accent-500:#d97706;
+  --ink:#0f172a;
+  --ink-2:#1e293b;
+  --muted:#64748b;
+  --muted-2:#94a3b8;
+  --line:#e2e8f0;
+  --line-2:#eef2f7;
+  --bg:#f6f7fb;
+  --surface:#ffffff;
+  --surface-2:#f8fafc;
+  --success:#10b981;
+  --danger:#ef4444;
+  --warning:#f59e0b;
+  --info:#3b82f6;
+  --radius:16px;
+  --radius-sm:10px;
+  --radius-lg:24px;
+  --shadow-sm:0 1px 2px rgba(15,23,42,.06),0 1px 3px rgba(15,23,42,.04);
+  --shadow:0 4px 16px -2px rgba(15,23,42,.08),0 2px 6px -2px rgba(15,23,42,.05);
+  --shadow-lg:0 24px 48px -12px rgba(15,23,42,.18),0 8px 20px -8px rgba(15,23,42,.08);
+  --shadow-glow:0 8px 30px -6px rgba(79,70,229,.45);
+  --grad:linear-gradient(135deg,#4f46e5 0%,#7c3aed 50%,#9333ea 100%);
+  --grad-soft:linear-gradient(135deg,#eef2ff 0%,#faf5ff 100%);
+  --grad-accent:linear-gradient(135deg,#f59e0b 0%,#f97316 100%);
+}
+[data-theme="dark"]{
+  --ink:#f1f5f9;
+  --ink-2:#e2e8f0;
+  --muted:#94a3b8;
+  --muted-2:#64748b;
+  --line:#1e293b;
+  --line-2:#172033;
+  --bg:#0a0e1a;
+  --surface:#111827;
+  --surface-2:#0f1626;
+  --primary-50:#1e1b4b;
+  --primary-100:#312e81;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4);
+  --shadow:0 4px 16px -2px rgba(0,0,0,.5);
+  --shadow-lg:0 24px 48px -12px rgba(0,0,0,.6);
+  --grad-soft:linear-gradient(135deg,#1e1b4b 0%,#2e1065 100%);
+}
+
+/* ============================================================
+   RESET & BASE
+   ============================================================ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--font);
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.7;
+  font-size:15px;
+  -webkit-font-smoothing:antialiased;
+  transition:background .3s,color .3s;
+  overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input,textarea,select{font-family:inherit;font-size:inherit;color:inherit}
+img{max-width:100%;display:block}
+ul{list-style:none}
+::selection{background:var(--primary);color:#fff}
+
+/* scrollbar */
+::-webkit-scrollbar{width:10px;height:10px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--line);border-radius:10px}
+::-webkit-scrollbar-thumb:hover{background:var(--muted-2)}
+
+/* ============================================================
+   LAYOUT HELPERS
+   ============================================================ */
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+.section{padding:96px 0}
+.section-sm{padding:64px 0}
+.text-center{text-align:center}
+.muted{color:var(--muted)}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:13px;font-weight:600;color:var(--primary);
+  background:var(--primary-50);padding:6px 14px;border-radius:100px;
+  margin-bottom:16px;
+}
+[data-theme="dark"] .eyebrow{background:rgba(79,70,229,.15)}
+.section-title{font-size:clamp(26px,3.2vw,40px);font-weight:800;line-height:1.3;letter-spacing:-.5px}
+.section-sub{color:var(--muted);font-size:16px;margin-top:14px;max-width:620px}
+.section-head{margin-bottom:48px}
+.section-head.center{margin-right:auto;margin-left:auto;text-align:center}
+.section-head.center .section-sub{margin-right:auto;margin-left:auto}
+
+.grid{display:grid;gap:24px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+.grid-4{grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){
+  .grid-3,.grid-4{grid-template-columns:repeat(2,1fr)}
+  .grid-2{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .grid-3,.grid-4{grid-template-columns:1fr}
+}
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+  padding:12px 22px;border-radius:12px;font-weight:600;font-size:14.5px;
+  transition:all .2s ease;white-space:nowrap;cursor:pointer;
+  border:1px solid transparent;
+}
+.btn svg{width:18px;height:18px}
+.btn-primary{background:var(--grad);color:#fff;box-shadow:var(--shadow-glow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 36px -6px rgba(79,70,229,.55)}
+.btn-dark{background:var(--ink);color:#fff}
+.btn-dark:hover{background:var(--ink-2);transform:translateY(-2px)}
+.btn-outline{border-color:var(--line);background:var(--surface);color:var(--ink)}
+.btn-outline:hover{border-color:var(--primary);color:var(--primary)}
+.btn-ghost{color:var(--muted)}
+.btn-ghost:hover{color:var(--primary);background:var(--primary-50)}
+.btn-lg{padding:15px 30px;font-size:15.5px;border-radius:14px}
+.btn-block{width:100%}
+.btn-accent{background:var(--grad-accent);color:#fff}
+.btn-accent:hover{transform:translateY(-2px);box-shadow:0 10px 30px -6px rgba(245,158,11,.5)}
+.btn-sm{padding:8px 14px;font-size:13px;border-radius:9px}
+
+/* ============================================================
+   CARDS
+   ============================================================ */
+.card{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:28px;
+  transition:all .25s ease;box-shadow:var(--shadow-sm);
+}
+.card-hover:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--primary-100)}
+.card-accent{position:relative;overflow:hidden}
+.card-accent::before{
+  content:"";position:absolute;top:0;right:0;width:120px;height:120px;
+  background:var(--grad-soft);border-radius:50%;filter:blur(40px);opacity:.7;
+}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:16px 0;
+  transition:all .3s;
+}
+.nav.scrolled{
+  background:rgba(255,255,255,.8);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--line);
+  padding:10px 0;
+}
+[data-theme="dark"] .nav.scrolled{background:rgba(17,24,39,.8)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:800;font-size:18px}
+.brand-mark{
+  width:42px;height:42px;border-radius:12px;background:var(--grad);
+  display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px;
+  box-shadow:var(--shadow-glow);
+}
+.brand-name small{display:block;font-size:11px;font-weight:500;color:var(--muted);letter-spacing:.5px}
+.nav-links{display:flex;align-items:center;gap:4px}
+.nav-link{
+  padding:9px 16px;border-radius:10px;font-size:14px;font-weight:500;
+  color:var(--ink-2);transition:all .2s;cursor:pointer;position:relative;
+}
+.nav-link:hover{color:var(--primary);background:var(--primary-50)}
+[data-theme="dark"] .nav-link:hover{background:rgba(79,70,229,.15)}
+.nav-link.active{color:var(--primary);font-weight:600}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.icon-btn{
+  width:40px;height:40px;border-radius:11px;display:grid;place-items:center;
+  color:var(--ink-2);border:1px solid var(--line);background:var(--surface);
+  transition:all .2s;
+}
+.icon-btn:hover{color:var(--primary);border-color:var(--primary)}
+.icon-btn svg{width:19px;height:19px}
+.nav-toggle{display:none}
+@media(max-width:980px){
+  .nav-links{display:none}
+  .nav-toggle{display:grid}
+}
+
+/* mobile menu */
+.mobile-menu{
+  position:fixed;inset:0;z-index:200;background:var(--bg);
+  transform:translateX(-100%);transition:transform .3s ease;
+  display:flex;flex-direction:column;padding:24px;
+}
+.mobile-menu.open{transform:translateX(0)}
+.mobile-menu-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px}
+.mobile-menu a{padding:14px 16px;border-radius:12px;font-size:16px;font-weight:500;cursor:pointer}
+.mobile-menu a:hover{background:var(--surface)}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{
+  position:relative;padding:160px 0 100px;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;z-index:-1;
+  background:
+    radial-gradient(ellipse 80% 60% at 80% 0%,rgba(79,70,229,.12),transparent 60%),
+    radial-gradient(ellipse 60% 50% at 10% 20%,rgba(147,51,234,.1),transparent 50%),
+    radial-gradient(ellipse 50% 40% at 50% 100%,rgba(245,158,11,.07),transparent 50%);
+}
+[data-theme="dark"] .hero-bg{
+  background:
+    radial-gradient(ellipse 80% 60% at 80% 0%,rgba(79,70,229,.25),transparent 60%),
+    radial-gradient(ellipse 60% 50% at 10% 20%,rgba(147,51,234,.18),transparent 50%);
+}
+.hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr;gap:48px}}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--surface);border:1px solid var(--line);
+  padding:8px 16px;border-radius:100px;font-size:13.5px;font-weight:500;
+  box-shadow:var(--shadow-sm);margin-bottom:24px;
+}
+.dot-live{width:8px;height:8px;border-radius:50%;background:var(--success);box-shadow:0 0 0 4px rgba(16,185,129,.18);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(16,185,129,.18)}50%{box-shadow:0 0 0 8px rgba(16,185,129,.05)}}
+.hero h1{
+  font-size:clamp(34px,5vw,58px);font-weight:900;line-height:1.2;
+  letter-spacing:-1px;margin-bottom:20px;
+}
+.gradient-text{
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero p.lead{font-size:17px;color:var(--muted);max-width:540px;margin-bottom:32px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:40px}
+.hero-stats{display:flex;gap:40px;flex-wrap:wrap}
+.hero-stat .num{font-size:28px;font-weight:800;letter-spacing:-.5px}
+.hero-stat .lbl{font-size:13px;color:var(--muted)}
+
+/* hero visual */
+.hero-visual{position:relative}
+.hero-card{
+  background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius-lg);padding:24px;box-shadow:var(--shadow-lg);
+  position:relative;
+}
+.hero-card-head{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.avatar{
+  width:54px;height:54px;border-radius:14px;background:var(--grad);
+  display:grid;place-items:center;color:#fff;font-weight:800;font-size:20px;
+}
+.hero-card-head h4{font-size:15px}
+.hero-card-head span{font-size:12.5px;color:var(--muted)}
+.mini-row{display:flex;justify-content:space-between;padding:12px 0;border-bottom:1px solid var(--line-2);font-size:13.5px}
+.mini-row:last-child{border-bottom:none}
+.mini-row .v{font-weight:700}
+.float-badge{
+  position:absolute;background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;padding:14px 18px;box-shadow:var(--shadow-lg);
+  display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;
+}
+.float-badge .ic{
+  width:36px;height:36px;border-radius:10px;display:grid;place-items:center;
+}
+.float-badge .ic svg{width:18px;height:18px}
+.fb-1{top:-20px;left:-30px}
+.fb-1 .ic{background:rgba(16,185,129,.12);color:var(--success)}
+.fb-2{bottom:-20px;right:-20px}
+.fb-2 .ic{background:rgba(245,158,11,.12);color:var(--accent)}
+@media(max-width:1100px){.fb-1{left:0}.fb-2{right:0}}
+
+/* ============================================================
+   FEATURE STRIP / TRUSTED
+   ============================================================ */
+.trust{
+  background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:28px 0;
+}
+.trust-inner{display:flex;align-items:center;justify-content:space-around;gap:24px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:12px;color:var(--muted);font-weight:600;font-size:14px}
+.trust-item .ti-ic{width:40px;height:40px;border-radius:11px;background:var(--primary-50);color:var(--primary);display:grid;place-items:center}
+[data-theme="dark"] .trust-item .ti-ic{background:rgba(79,70,229,.18)}
+.trust-item .ti-ic svg{width:20px;height:20px}
+
+/* ============================================================
+   FEATURES (SERVICES TEASER)
+   ============================================================ */
+.feature-icon{
+  width:56px;height:56px;border-radius:14px;display:grid;place-items:center;
+  margin-bottom:20px;color:#fff;
+}
+.feature-icon svg{width:26px;height:26px}
+.fi-1{background:linear-gradient(135deg,#4f46e5,#6366f1)}
+.fi-2{background:linear-gradient(135deg,#7c3aed,#9333ea)}
+.fi-3{background:linear-gradient(135deg,#0ea5e9,#06b6d4)}
+.fi-4{background:linear-gradient(135deg,#f59e0b,#f97316)}
+.fi-5{background:linear-gradient(135deg,#10b981,#059669)}
+.fi-6{background:linear-gradient(135deg,#ef4444,#ec4899)}
+.card h3{font-size:18px;margin-bottom:8px}
+.card p{color:var(--muted);font-size:14px}
+.card .arr{margin-top:18px;display:inline-flex;align-items:center;gap:6px;color:var(--primary);font-weight:600;font-size:13.5px}
+
+/* ============================================================
+   ABOUT SPLIT
+   ============================================================ */
+.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:60px;align-items:center}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr}}
+.about-img{
+  position:relative;border-radius:var(--radius-lg);overflow:hidden;
+  aspect-ratio:4/5;background:var(--grad-soft);
+  border:1px solid var(--line);
+}
+.about-img-placeholder{
+  position:absolute;inset:0;display:grid;place-items:center;
+}
+.about-img-placeholder svg{width:140px;height:140px;color:var(--primary);opacity:.4}
+.about-exp{
+  position:absolute;bottom:20px;right:20px;left:20px;
+  background:var(--surface);border-radius:16px;padding:18px 22px;
+  box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:16px;
+}
+.about-exp .num{font-size:34px;font-weight:800;color:var(--primary);line-height:1}
+.about-exp .txt{font-size:13px;color:var(--muted)}
+.timeline{position:relative;padding-right:28px}
+.timeline::before{
+  content:"";position:absolute;right:8px;top:6px;bottom:6px;width:2px;
+  background:var(--line);
+}
+.tl-item{position:relative;padding-bottom:28px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item::before{
+  content:"";position:absolute;right:-27px;top:4px;width:18px;height:18px;
+  border-radius:50%;background:var(--surface);border:3px solid var(--primary);
+}
+.tl-item .tl-year{font-size:12.5px;font-weight:700;color:var(--primary);margin-bottom:4px}
+.tl-item h4{font-size:16px;margin-bottom:2px}
+.tl-item p{font-size:13.5px;color:var(--muted)}
+
+/* ============================================================
+   STATS
+   ============================================================ */
+.stats{background:var(--grad);color:#fff;border-radius:var(--radius-lg);padding:48px}
+.stats .grid{gap:0}
+.stat-cell{text-align:center;padding:16px;position:relative}
+.stat-cell:not(:last-child)::after{
+  content:"";position:absolute;right:0;top:20%;bottom:20%;width:1px;
+  background:rgba(255,255,255,.2);
+}
+@media(max-width:560px){.stat-cell:not(:last-child)::after{display:none}}
+.stat-cell .n{font-size:40px;font-weight:800;line-height:1}
+.stat-cell .l{font-size:14px;opacity:.85;margin-top:8px}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.testi{position:relative}
+.testi-stars{color:var(--accent);display:flex;gap:2px;margin-bottom:14px}
+.testi-stars svg{width:16px;height:16px}
+.testi p{font-size:15px;color:var(--ink-2);margin-bottom:20px;line-height:1.8}
+.testi-user{display:flex;align-items:center;gap:12px}
+.testi-avatar{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff;font-weight:700}
+.testi-user h5{font-size:14.5px}
+.testi-user span{font-size:12.5px;color:var(--muted)}
+.ta-1{background:linear-gradient(135deg,#4f46e5,#7c3aed)}
+.ta-2{background:linear-gradient(135deg,#0ea5e9,#06b6d4)}
+.ta-3{background:linear-gradient(135deg,#f59e0b,#f97316)}
+
+/* ============================================================
+   CTA
+   ============================================================ */
+.cta-box{
+  background:var(--grad);color:#fff;border-radius:var(--radius-lg);
+  padding:56px;text-align:center;position:relative;overflow:hidden;
+}
+.cta-box::before,.cta-box::after{
+  content:"";position:absolute;border-radius:50%;filter:blur(60px);opacity:.4;
+}
+.cta-box::before{width:300px;height:300px;background:#9333ea;top:-100px;right:-50px}
+.cta-box::after{width:250px;height:250px;background:#f59e0b;bottom:-100px;left:-50px}
+.cta-box h2{font-size:clamp(24px,3vw,36px);font-weight:800;margin-bottom:14px;position:relative}
+.cta-box p{opacity:.9;margin-bottom:28px;position:relative}
+.cta-box .btn{position:relative}
+.btn-white{background:#fff;color:var(--primary)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg)}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{background:var(--surface);border-top:1px solid var(--line);padding:64px 0 28px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+@media(max-width:760px){.footer-grid{grid-template-columns:1fr 1fr;gap:32px}}
+.footer h5{font-size:14px;font-weight:700;margin-bottom:18px}
+.footer ul li{margin-bottom:10px}
+.footer ul a{color:var(--muted);font-size:14px;cursor:pointer;transition:color .2s}
+.footer ul a:hover{color:var(--primary)}
+.footer-about p{color:var(--muted);font-size:14px;margin:14px 0 18px;max-width:320px}
+.social{display:flex;gap:10px}
+.social a{
+  width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
+  border:1px solid var(--line);color:var(--muted);transition:all .2s;
+}
+.social a:hover{color:var(--primary);border-color:var(--primary);background:var(--primary-50)}
+.social svg{width:18px;height:18px}
+.footer-bottom{
+  border-top:1px solid var(--line);padding-top:24px;
+  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  color:var(--muted);font-size:13px;
+}
+
+/* ============================================================
+   PAGE HEADER (inner pages)
+   ============================================================ */
+.page-header{
+  padding:140px 0 60px;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 0%,rgba(79,70,229,.1),transparent 60%);
+  border-bottom:1px solid var(--line);
+}
+.breadcrumb{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted);margin-bottom:16px}
+.breadcrumb a{cursor:pointer}
+.breadcrumb a:hover{color:var(--primary)}
+.breadcrumb svg{width:14px;height:14px}
+.page-header h1{font-size:clamp(28px,4vw,44px);font-weight:800;letter-spacing:-.5px;margin-bottom:12px}
+.page-header p{color:var(--muted);font-size:16px;max-width:640px}
+
+/* ============================================================
+   RESUME
+   ============================================================ */
+.resume-layout{display:grid;grid-template-columns:320px 1fr;gap:32px;align-items:start}
+@media(max-width:900px){.resume-layout{grid-template-columns:1fr}}
+.resume-side{position:sticky;top:100px}
+@media(max-width:900px){.resume-side{position:static}}
+.profile-card{text-align:center;padding:32px 24px}
+.profile-card .avatar-lg{
+  width:110px;height:110px;border-radius:24px;margin:0 auto 18px;
+  background:var(--grad);display:grid;place-items:center;color:#fff;
+  font-size:42px;font-weight:800;box-shadow:var(--shadow-glow);
+}
+.profile-card h3{font-size:20px;margin-bottom:4px}
+.profile-card .role{color:var(--primary);font-weight:600;font-size:14px;margin-bottom:18px}
+.profile-meta{text-align:right;border-top:1px solid var(--line-2);padding-top:18px}
+.pm-row{display:flex;align-items:center;gap:12px;padding:8px 0;font-size:13.5px}
+.pm-row svg{width:17px;height:17px;color:var(--primary);flex-shrink:0}
+.pm-row span{color:var(--muted)}
+.skill-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.tag{
+  padding:6px 12px;border-radius:8px;font-size:12.5px;font-weight:500;
+  background:var(--primary-50);color:var(--primary);
+}
+[data-theme="dark"] .tag{background:rgba(79,70,229,.18)}
+.tag-outline{background:transparent;border:1px solid var(--line);color:var(--muted)}
+.skill-bar{margin-bottom:16px}
+.skill-bar-top{display:flex;justify-content:space-between;font-size:13px;margin-bottom:7px}
+.skill-bar-track{height:8px;border-radius:100px;background:var(--line-2);overflow:hidden}
+.skill-bar-fill{height:100%;border-radius:100px;background:var(--grad);width:0;transition:width 1s ease}
+.resume-block{margin-bottom:40px}
+.resume-block:last-child{margin-bottom:0}
+.resume-block-head{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+.resume-block-head .ic{
+  width:44px;height:44px;border-radius:12px;background:var(--primary-50);color:var(--primary);
+  display:grid;place-items:center;
+}
+[data-theme="dark"] .resume-block-head .ic{background:rgba(79,70,229,.18)}
+.resume-block-head .ic svg{width:22px;height:22px}
+.resume-block-head h3{font-size:20px}
+.resume-entry{
+  display:grid;grid-template-columns:140px 1fr;gap:24px;padding:22px 0;
+  border-bottom:1px solid var(--line-2);
+}
+.resume-entry:last-child{border-bottom:none}
+@media(max-width:600px){.resume-entry{grid-template-columns:1fr;gap:6px}}
+.resume-entry .yr{font-size:13px;color:var(--muted);font-weight:600}
+.resume-entry h4{font-size:16px;margin-bottom:4px}
+.resume-entry .org{color:var(--primary);font-size:13.5px;font-weight:600;margin-bottom:8px}
+.resume-entry p{font-size:14px;color:var(--muted)}
+
+/* ============================================================
+   SERVICES PRICING
+   ============================================================ */
+.price-card{padding:32px;position:relative;display:flex;flex-direction:column}
+.price-card.featured{border-color:var(--primary);box-shadow:var(--shadow-glow);transform:scale(1.03)}
+.price-popular{
+  position:absolute;top:-13px;right:50%;transform:translateX(50%);
+  background:var(--grad);color:#fff;font-size:12px;font-weight:700;
+  padding:5px 16px;border-radius:100px;
+}
+.price-name{font-size:18px;font-weight:700;margin-bottom:6px}
+.price-desc{font-size:13.5px;color:var(--muted);margin-bottom:20px}
+.price-amount{display:flex;align-items:baseline;gap:6px;margin-bottom:24px}
+.price-amount .a{font-size:40px;font-weight:800;letter-spacing:-1px}
+.price-amount .u{font-size:14px;color:var(--muted)}
+.price-features{margin-bottom:28px;flex:1}
+.price-features li{display:flex;align-items:flex-start;gap:10px;padding:9px 0;font-size:14px}
+.price-features svg{width:18px;height:18px;color:var(--success);flex-shrink:0;margin-top:2px}
+.price-features li.off{color:var(--muted-2)}
+.price-features li.off svg{color:var(--muted-2)}
+
+/* ============================================================
+   ARTICLES / BLOG
+   ============================================================ */
+.article-card{overflow:hidden;padding:0;display:flex;flex-direction:column}
+.article-img{
+  aspect-ratio:16/10;background:var(--grad-soft);position:relative;
+  display:grid;place-items:center;overflow:hidden;
+}
+.article-img svg{width:60px;height:60px;color:var(--primary);opacity:.35}
+.article-cat{
+  position:absolute;top:14px;right:14px;
+  background:rgba(255,255,255,.95);color:var(--primary);
+  font-size:12px;font-weight:700;padding:5px 12px;border-radius:100px;
+  backdrop-filter:blur(8px);
+}
+.article-body{padding:22px;flex:1;display:flex;flex-direction:column}
+.article-meta{display:flex;align-items:center;gap:14px;font-size:12.5px;color:var(--muted);margin-bottom:10px}
+.article-meta span{display:flex;align-items:center;gap:5px}
+.article-meta svg{width:14px;height:14px}
+.article-body h3{font-size:17px;line-height:1.5;margin-bottom:8px}
+.article-body p{font-size:13.5px;color:var(--muted);flex:1}
+.article-foot{margin-top:16px;display:flex;justify-content:space-between;align-items:center}
+.read-more{color:var(--primary);font-weight:600;font-size:13px;display:inline-flex;align-items:center;gap:5px}
+
+.filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:36px}
+.chip{
+  padding:9px 18px;border-radius:100px;font-size:13.5px;font-weight:500;
+  background:var(--surface);border:1px solid var(--line);color:var(--muted);
+  cursor:pointer;transition:all .2s;
+}
+.chip:hover{border-color:var(--primary);color:var(--primary)}
+.chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+.search-box{
+  display:flex;align-items:center;gap:10px;background:var(--surface);
+  border:1px solid var(--line);border-radius:12px;padding:0 16px;margin-bottom:28px;
+}
+.search-box:focus-within{border-color:var(--primary);box-shadow:0 0 0 4px var(--primary-50)}
+.search-box svg{width:19px;height:19px;color:var(--muted)}
+.search-box input{flex:1;border:none;outline:none;background:transparent;padding:13px 0;font-size:14.5px}
+
+/* article detail */
+.article-detail{max-width:760px;margin:0 auto}
+.article-detail .article-hero{
+  aspect-ratio:2/1;border-radius:var(--radius-lg);background:var(--grad-soft);
+  margin-bottom:32px;display:grid;place-items:center;border:1px solid var(--line);
+}
+.article-detail .article-hero svg{width:90px;height:90px;color:var(--primary);opacity:.3}
+.article-detail h1{font-size:clamp(26px,3.5vw,38px);font-weight:800;line-height:1.4;margin-bottom:16px;letter-spacing:-.5px}
+.article-detail .lead{font-size:17px;color:var(--muted);margin-bottom:28px;line-height:1.9}
+.article-detail h2{font-size:22px;font-weight:700;margin:36px 0 14px}
+.article-detail p{margin-bottom:16px;line-height:2;color:var(--ink-2)}
+.article-detail blockquote{
+  border-right:4px solid var(--primary);background:var(--primary-50);
+  padding:18px 22px;border-radius:0 12px 12px 0;margin:24px 0;
+  font-size:16px;color:var(--ink-2);
+}
+[data-theme="dark"] .article-detail blockquote{background:rgba(79,70,229,.12)}
+
+/* ============================================================
+   CONTACT
+   ============================================================ */
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:40px;align-items:start}
+@media(max-width:900px){.contact-grid{grid-template-columns:1fr}}
+.contact-info-card{padding:32px}
+.ci-item{display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--line-2)}
+.ci-item:last-child{border-bottom:none}
+.ci-ic{
+  width:46px;height:46px;border-radius:12px;background:var(--primary-50);color:var(--primary);
+  display:grid;place-items:center;flex-shrink:0;
+}
+[data-theme="dark"] .ci-ic{background:rgba(79,70,229,.18)}
+.ci-ic svg{width:21px;height:21px}
+.ci-item h5{font-size:14px;margin-bottom:2px}
+.ci-item p{font-size:14px;color:var(--muted)}
+.form-card{padding:32px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:560px){.form-row{grid-template-columns:1fr}}
+.field{margin-bottom:18px}
+.field label{display:block;font-size:13.5px;font-weight:600;margin-bottom:8px}
+.field input,.field textarea,.field select{
+  width:100%;padding:12px 14px;border-radius:11px;border:1px solid var(--line);
+  background:var(--surface-2);outline:none;transition:all .2s;font-size:14.5px;
+}
+.field input:focus,.field textarea:focus,.field select:focus{
+  border-color:var(--primary);box-shadow:0 0 0 4px var(--primary-50);background:var(--surface);
+}
+.field textarea{resize:vertical;min-height:120px}
+
+/* ============================================================
+   AUTH
+   ============================================================ */
+.auth-wrap{min-height:100vh;display:grid;grid-template-columns:1fr 1fr}
+@media(max-width:900px){.auth-wrap{grid-template-columns:1fr}}
+.auth-side{
+  background:var(--grad);color:#fff;padding:56px;position:relative;overflow:hidden;
+  display:flex;flex-direction:column;justify-content:space-between;
+}
+@media(max-width:900px){.auth-side{display:none}}
+.auth-side::before{
+  content:"";position:absolute;width:500px;height:500px;border-radius:50%;
+  background:rgba(255,255,255,.08);top:-200px;left:-150px;
+}
+.auth-side::after{
+  content:"";position:absolute;width:400px;height:400px;border-radius:50%;
+  background:rgba(255,255,255,.06);bottom:-150px;right:-100px;
+}
+.auth-side-inner{position:relative;z-index:1}
+.auth-side .brand{color:#fff;margin-bottom:48px}
+.auth-side h2{font-size:34px;font-weight:800;line-height:1.4;margin-bottom:16px}
+.auth-side p{opacity:.85;font-size:15px;line-height:1.9;max-width:400px}
+.auth-features{margin-top:40px;display:grid;gap:16px;position:relative;z-index:1}
+.auth-feat{display:flex;align-items:center;gap:12px;font-size:14.5px}
+.auth-feat .ck{
+  width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.2);
+  display:grid;place-items:center;flex-shrink:0;
+}
+.auth-feat .ck svg{width:16px;height:16px}
+.auth-form-side{display:flex;align-items:center;justify-content:center;padding:40px 24px}
+.auth-form{width:100%;max-width:400px}
+.auth-form .brand{justify-content:center;margin-bottom:36px}
+.auth-form h1{font-size:26px;font-weight:800;text-align:center;margin-bottom:8px}
+.auth-form .sub{text-align:center;color:var(--muted);font-size:14px;margin-bottom:32px}
+.otp-inputs{display:flex;gap:10px;justify-content:center;margin:24px 0}
+.otp-inputs input{
+  width:52px;height:60px;text-align:center;font-size:22px;font-weight:700;
+  border-radius:12px;border:1.5px solid var(--line);background:var(--surface-2);
+  outline:none;transition:all .15s;
+}
+.otp-inputs input:focus{border-color:var(--primary);box-shadow:0 0 0 4px var(--primary-50)}
+.auth-divider{display:flex;align-items:center;gap:14px;margin:24px 0;color:var(--muted);font-size:13px}
+.auth-divider::before,.auth-divider::after{content:"";flex:1;height:1px;background:var(--line)}
+.auth-foot{text-align:center;margin-top:24px;font-size:14px;color:var(--muted)}
+.auth-foot a{color:var(--primary);font-weight:600;cursor:pointer}
+
+/* back button */
+.back-top{
+  position:fixed;bottom:24px;left:24px;z-index:90;
+  width:48px;height:48px;border-radius:14px;background:var(--primary);color:#fff;
+  display:grid;place-items:center;box-shadow:var(--shadow-glow);
+  opacity:0;pointer-events:none;transition:all .3s;
+}
+.back-top.show{opacity:1;pointer-events:auto}
+.back-top svg{width:22px;height:22px}
+
+/* ============================================================
+   DASHBOARD
+   ============================================================ */
+.dash{display:grid;grid-template-columns:270px 1fr;min-height:100vh}
+@media(max-width:980px){.dash{grid-template-columns:1fr}}
+.dash-side{
+  background:var(--surface);border-left:1px solid var(--line);
+  padding:24px 18px;position:sticky;top:0;height:100vh;overflow-y:auto;
+}
+@media(max-width:980px){
+  .dash-side{display:none;position:fixed;right:0;top:0;z-index:150;width:280px}
+  .dash-side.open{display:block}
+}
+.dash-side .brand{padding:0 8px 24px;border-bottom:1px solid var(--line-2);margin-bottom:18px}
+.dash-user{
+  display:flex;align-items:center;gap:12px;padding:14px;border-radius:14px;
+  background:var(--surface-2);margin-bottom:20px;
+}
+.dash-user .avatar{width:42px;height:42px;border-radius:11px;font-size:16px}
+.dash-user h5{font-size:14px}
+.dash-user span{font-size:12px;color:var(--muted)}
+.dash-nav-label{font-size:11px;font-weight:700;color:var(--muted-2);padding:0 12px;margin:16px 0 8px;letter-spacing:.5px}
+.dash-link{
+  display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:11px;
+  font-size:14px;font-weight:500;color:var(--ink-2);cursor:pointer;
+  transition:all .18s;margin-bottom:2px;
+}
+.dash-link svg{width:19px;height:19px;color:var(--muted);transition:color .18s}
+.dash-link:hover{background:var(--primary-50);color:var(--primary)}
+[data-theme="dark"] .dash-link:hover{background:rgba(79,70,229,.15)}
+.dash-link:hover svg{color:var(--primary)}
+.dash-link.active{background:var(--grad);color:#fff;box-shadow:var(--shadow-glow)}
+.dash-link.active svg{color:#fff}
+.dash-link .badge-dot{
+  margin-right:auto;background:var(--danger);color:#fff;font-size:10px;
+  min-width:18px;height:18px;border-radius:100px;display:grid;place-items:center;padding:0 5px;font-weight:700;
+}
+.dash-link.active .badge-dot{background:#fff;color:var(--primary)}
+.dash-side-foot{margin-top:auto;border-top:1px solid var(--line-2);padding-top:16px;margin-top:24px}
+
+.dash-main{padding:28px 36px;min-width:0}
+@media(max-width:600px){.dash-main{padding:20px 16px}}
+.dash-top{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  margin-bottom:28px;flex-wrap:wrap;
+}
+.dash-top h1{font-size:24px;font-weight:800}
+.dash-top .sub{font-size:13.5px;color:var(--muted)}
+.dash-top-actions{display:flex;align-items:center;gap:10px}
+.search-dash{
+  display:flex;align-items:center;gap:8px;background:var(--surface);
+  border:1px solid var(--line);border-radius:11px;padding:0 14px;
+}
+.search-dash input{border:none;outline:none;background:transparent;padding:10px 0;width:180px;font-size:13.5px}
+.search-dash svg{width:17px;height:17px;color:var(--muted)}
+.hamburger{display:none}
+@media(max-width:980px){.hamburger{display:grid}}
+@media(max-width:560px){.search-dash{display:none}}
+
+/* stat cards */
+.stat-card{padding:22px;display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.stat-card .sc-ic{width:48px;height:48px;border-radius:13px;display:grid;place-items:center}
+.stat-card .sc-ic svg{width:23px;height:23px}
+.sc-1{background:rgba(79,70,229,.12);color:var(--primary)}
+.sc-2{background:rgba(16,185,129,.12);color:var(--success)}
+.sc-3{background:rgba(245,158,11,.12);color:var(--accent)}
+.sc-4{background:rgba(239,68,68,.12);color:var(--danger)}
+[data-theme="dark"] .sc-1{background:rgba(79,70,229,.25)}
+[data-theme="dark"] .sc-2{background:rgba(16,185,129,.25)}
+[data-theme="dark"] .sc-3{background:rgba(245,158,11,.25)}
+[data-theme="dark"] .sc-4{background:rgba(239,68,68,.25)}
+.stat-card .sc-lbl{font-size:13px;color:var(--muted);margin-bottom:6px}
+.stat-card .sc-val{font-size:26px;font-weight:800;letter-spacing:-.5px}
+.stat-card .sc-trend{font-size:12px;font-weight:600;margin-top:6px;display:inline-flex;align-items:center;gap:4px}
+.up{color:var(--success)}
+.down{color:var(--danger)}
+
+/* dash panels */
+.panel{
+  background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+  padding:24px;box-shadow:var(--shadow-sm);
+}
+.panel-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:12px;flex-wrap:wrap}
+.panel-head h3{font-size:17px;font-weight:700}
+.panel-head .sub{font-size:12.5px;color:var(--muted)}
+.dash-grid{display:grid;gap:24px}
+.dash-cols-3{grid-template-columns:2fr 1fr}
+.dash-cols-2{grid-template-columns:1fr 1fr}
+@media(max-width:1000px){.dash-cols-3,.dash-cols-2{grid-template-columns:1fr}}
+
+/* chart */
+.chart-wrap{position:relative;width:100%;height:240px}
+.legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:16px}
+.legend-item{display:flex;align-items:center;gap:7px;font-size:12.5px;color:var(--muted)}
+.legend-dot{width:10px;height:10px;border-radius:3px}
+
+/* progress list */
+.prog-row{padding:14px 0;border-bottom:1px solid var(--line-2)}
+.prog-row:last-child{border-bottom:none}
+.prog-row-top{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:8px}
+.prog-row-top span:last-child{font-weight:700}
+.prog-track{height:7px;border-radius:100px;background:var(--line-2);overflow:hidden}
+.prog-fill{height:100%;border-radius:100px}
+
+/* upcoming / activity list */
+.list-item{display:flex;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line-2)}
+.list-item:last-child{border-bottom:none}
+.li-ic{width:42px;height:42px;border-radius:11px;display:grid;place-items:center;flex-shrink:0}
+.li-ic svg{width:19px;height:19px}
+.li-1{background:rgba(79,70,229,.12);color:var(--primary)}
+.li-2{background:rgba(16,185,129,.12);color:var(--success)}
+.li-3{background:rgba(245,158,11,.12);color:var(--accent)}
+.li-4{background:rgba(239,68,68,.12);color:var(--danger)}
+.list-item .li-body{flex:1;min-width:0}
+.list-item h5{font-size:14px;margin-bottom:2px}
+.list-item p{font-size:12.5px;color:var(--muted)}
+.list-item .li-time{font-size:12px;color:var(--muted);font-weight:600;flex-shrink:0}
+
+/* donut */
+.donut-wrap{display:flex;align-items:center;gap:28px;flex-wrap:wrap;justify-content:center}
+.donut-legend{display:grid;gap:12px}
+.donut-legend .dl-row{display:flex;align-items:center;gap:10px;font-size:13.5px}
+.donut-legend .dl-dot{width:11px;height:11px;border-radius:3px}
+.donut-legend .dl-val{margin-right:auto;font-weight:700}
+
+/* ============================================================
+   PLANNER (week)
+   ============================================================ */
+.week-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:10px;overflow-x:auto;padding-bottom:6px}
+.day-col{
+  background:var(--surface);border:1px solid var(--line);border-radius:14px;
+  padding:14px;min-width:150px;
+}
+.day-head{text-align:center;padding-bottom:12px;border-bottom:1px solid var(--line-2);margin-bottom:12px}
+.day-head .dn{font-size:12px;color:var(--muted)}
+.day-head .dd{font-size:22px;font-weight:800;margin-top:2px}
+.day-head.today .dd{color:var(--primary)}
+.day-head.today{position:relative}
+.day-head.today::after{content:"امروز";position:absolute;bottom:-8px;right:50%;transform:translateX(50%);background:var(--primary);color:#fff;font-size:10px;padding:2px 8px;border-radius:100px;font-weight:600}
+.task{
+  padding:10px 12px;border-radius:10px;margin-bottom:8px;font-size:12.5px;
+  border-right:3px solid;cursor:pointer;transition:transform .15s;
+}
+.task:hover{transform:translateX(-3px)}
+.task h6{font-size:13px;font-weight:700;margin-bottom:3px}
+.task span{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:4px}
+.task svg{width:12px;height:12px}
+.t-blue{background:rgba(79,70,229,.08);border-color:var(--primary)}
+.t-green{background:rgba(16,185,129,.08);border-color:var(--success)}
+.t-amber{background:rgba(245,158,11,.08);border-color:var(--accent)}
+.t-rose{background:rgba(239,68,68,.08);border-color:var(--danger)}
+.task.done{opacity:.55;text-decoration:line-through}
+
+/* ============================================================
+   DAILY REPORT
+   ============================================================ */
+.report-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
+@media(max-width:900px){.report-grid{grid-template-columns:1fr}}
+.subject-row{
+  display:grid;grid-template-columns:1fr 90px 90px 40px;gap:10px;align-items:center;
+  padding:14px;border-radius:12px;background:var(--surface-2);margin-bottom:10px;
+}
+@media(max-width:560px){.subject-row{grid-template-columns:1fr 70px 70px 36px}}
+.subject-row select,.subject-row input{
+  padding:9px 10px;border-radius:9px;border:1px solid var(--line);
+  background:var(--surface);outline:none;font-size:13px;width:100%;
+}
+.subject-row .del{
+  width:36px;height:36px;border-radius:9px;display:grid;place-items:center;
+  color:var(--danger);background:rgba(239,68,68,.08);
+}
+.subject-row .del svg{width:16px;height:16px}
+.mood-picker{display:flex;gap:10px;flex-wrap:wrap}
+.mood{
+  flex:1;min-width:80px;padding:14px;border-radius:12px;border:1.5px solid var(--line);
+  text-align:center;cursor:pointer;transition:all .15s;background:var(--surface-2);
+}
+.mood:hover{border-color:var(--primary)}
+.mood.selected{border-color:var(--primary);background:var(--primary-50)}
+[data-theme="dark"] .mood.selected{background:rgba(79,70,229,.18)}
+.mood .em{font-size:26px;display:block;margin-bottom:4px}
+.mood span{font-size:12px;font-weight:600}
+
+/* ============================================================
+   QUESTION BANK
+   ============================================================ */
+.qb-filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
+.qb-filters select{
+  padding:10px 14px;border-radius:11px;border:1px solid var(--line);
+  background:var(--surface);outline:none;font-size:13.5px;cursor:pointer;
+}
+.q-card{padding:20px;cursor:pointer}
+.q-card:hover{border-color:var(--primary)}
+.q-meta{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:10px}
+.q-tag{font-size:11px;font-weight:600;padding:4px 10px;border-radius:7px}
+.qt-subject{background:var(--primary-50);color:var(--primary)}
+.qt-chapter{background:rgba(245,158,11,.12);color:var(--accent-500)}
+.qt-diff{background:rgba(16,185,129,.12);color:var(--success)}
+.qt-diff.med{background:rgba(245,158,11,.12);color:var(--accent-500)}
+.qt-diff.hard{background:rgba(239,68,68,.12);color:var(--danger)}
+.q-card h4{font-size:15px;margin-bottom:10px;line-height:1.7}
+.q-foot{display:flex;justify-content:space-between;align-items:center;font-size:12.5px;color:var(--muted)}
+
+/* ============================================================
+   EXAM
+   ============================================================ */
+.exam-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:900px){.exam-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.exam-grid{grid-template-columns:1fr}}
+.exam-card{padding:24px;position:relative;overflow:hidden}
+.exam-card .ec-status{
+  position:absolute;top:18px;left:18px;font-size:11px;font-weight:700;
+  padding:4px 10px;border-radius:7px;
+}
+.ecs-avail{background:rgba(16,185,129,.12);color:var(--success)}
+.ecs-done{background:rgba(79,70,229,.1);color:var(--primary)}
+.ecs-locked{background:var(--line-2);color:var(--muted)}
+.exam-icon{width:54px;height:54px;border-radius:14px;background:var(--grad-soft);display:grid;place-items:center;margin-bottom:18px}
+.exam-icon svg{width:26px;height:26px;color:var(--primary)}
+.exam-card h4{font-size:17px;margin-bottom:6px}
+.exam-card p{font-size:13px;color:var(--muted);margin-bottom:18px}
+.exam-stats{display:flex;gap:18px;margin-bottom:20px;padding:14px 0;border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.exam-stats .es{font-size:12px;color:var(--muted)}
+.exam-stats .es b{display:block;font-size:16px;color:var(--ink);margin-top:2px}
+
+/* exam run */
+.exam-run{display:grid;grid-template-columns:1fr 280px;gap:24px;align-items:start}
+@media(max-width:900px){.exam-run{grid-template-columns:1fr}}
+.exam-timer{
+  position:sticky;top:20px;background:var(--surface);border:1px solid var(--line);
+  border-radius:14px;padding:20px;text-align:center;
+}
+.exam-timer .et-label{font-size:12px;color:var(--muted);margin-bottom:6px}
+.exam-timer .et-time{font-size:30px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--primary);letter-spacing:-1px}
+.exam-timer .et-time.warn{color:var(--danger);animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.5}}
+.q-palette{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:18px}
+.qp-cell{
+  aspect-ratio:1;border-radius:9px;display:grid;place-items:center;
+  font-size:13px;font-weight:600;background:var(--surface-2);border:1px solid var(--line);
+  cursor:pointer;
+}
+.qp-cell.current{background:var(--primary);color:#fff;border-color:var(--primary)}
+.qp-cell.answered{background:rgba(16,185,129,.15);color:var(--success);border-color:var(--success)}
+.qp-cell.marked{background:rgba(245,158,11,.15);color:var(--accent-500);border-color:var(--accent)}
+.q-question{font-size:18px;font-weight:700;line-height:1.8;margin-bottom:28px}
+.q-option{
+  display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:13px;
+  border:1.5px solid var(--line);margin-bottom:12px;cursor:pointer;
+  transition:all .15s;font-size:14.5px;background:var(--surface-2);
+}
+.q-option:hover{border-color:var(--primary);background:var(--primary-50)}
+[data-theme="dark"] .q-option:hover{background:rgba(79,70,229,.12)}
+.q-option.selected{border-color:var(--primary);background:var(--primary-50);font-weight:600}
+[data-theme="dark"] .q-option.selected{background:rgba(79,70,229,.18)}
+.q-option .opt-letter{
+  width:32px;height:32px;border-radius:9px;background:var(--surface);
+  display:grid;place-items:center;font-weight:700;flex-shrink:0;border:1px solid var(--line);
+}
+.q-option.selected .opt-letter{background:var(--primary);color:#fff;border-color:var(--primary)}
+.q-nav-btns{display:flex;justify-content:space-between;margin-top:28px;gap:12px}
+
+/* exam result */
+.result-hero{text-align:center;padding:40px 24px}
+.result-ring{width:160px;height:160px;margin:0 auto 24px;position:relative}
+.result-ring svg{transform:scale(-1,1)}
+.result-ring .rr-center{position:absolute;inset:0;display:grid;place-items:center;flex-direction:column}
+.result-ring .rr-pct{font-size:40px;font-weight:800;color:var(--primary);line-height:1}
+.result-ring .rr-lbl{font-size:13px;color:var(--muted)}
+.result-hero h2{font-size:26px;margin-bottom:8px}
+.result-hero p{color:var(--muted)}
+.result-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
+@media(max-width:600px){.result-stats{grid-template-columns:repeat(2,1fr)}}
+.rs-box{text-align:center;padding:18px;border-radius:13px;background:var(--surface-2)}
+.rs-box .n{font-size:24px;font-weight:800}
+.rs-box .l{font-size:12px;color:var(--muted);margin-top:4px}
+
+/* ============================================================
+   ANALYTICS
+   ============================================================ */
+.heatmap{display:grid;grid-template-columns:auto repeat(15,1fr);gap:5px;align-items:center}
+.heatmap .hm-label{font-size:11px;color:var(--muted);text-align:center}
+.heatmap .hm-day{font-size:11px;color:var(--muted);padding-left:6px}
+.hm-cell{aspect-ratio:1;border-radius:4px;background:var(--line-2)}
+.hm-1{background:rgba(79,70,229,.2)}
+.hm-2{background:rgba(79,70,229,.4)}
+.hm-3{background:rgba(79,70,229,.65)}
+.hm-4{background:rgba(79,70,229,.9)}
+
+/* ============================================================
+   FILES
+   ============================================================ */
+.file-row{
+  display:flex;align-items:center;gap:16px;padding:16px;border-radius:13px;
+  border:1px solid var(--line);margin-bottom:10px;background:var(--surface);
+  transition:all .15s;cursor:pointer;
+}
+.file-row:hover{border-color:var(--primary);transform:translateX(-3px)}
+.file-ic{
+  width:48px;height:48px;border-radius:12px;display:grid;place-items:center;
+  flex-shrink:0;
+}
+.file-ic svg{width:22px;height:22px}
+.fi-pdf{background:rgba(239,68,68,.12);color:var(--danger)}
+.fi-vid{background:rgba(239,68,68,.12);color:#dc2626}
+.fi-doc{background:rgba(79,70,229,.12);color:var(--primary)}
+.fi-zip{background:rgba(245,158,11,.12);color:var(--accent-500)}
+.fi-img{background:rgba(16,185,129,.12);color:var(--success)}
+.file-info{flex:1;min-width:0}
+.file-info h5{font-size:14.5px;margin-bottom:3px}
+.file-info p{font-size:12.5px;color:var(--muted)}
+.file-size{font-size:13px;color:var(--muted);font-weight:600;flex-shrink:0}
+
+/* ============================================================
+   UTILITIES & ANIMATIONS
+   ============================================================ */
+.view{display:none;animation:fade .35s ease}
+.view.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.flex{display:flex}
+.items-center{align-items:center}
+.justify-between{justify-content:space-between}
+.gap-2{gap:8px}.gap-3{gap:12px}.gap-4{gap:16px}
+.mt-2{margin-top:8px}.mt-3{margin-top:12px}.mt-4{margin-top:16px}.mt-6{margin-top:24px}
+.mb-2{margin-bottom:8px}.mb-3{margin-bottom:12px}.mb-4{margin-bottom:16px}
+.text-sm{font-size:13px}.text-xs{font-size:12px}
+.font-bold{font-weight:700}
+.hidden{display:none!important}
+.badge{
+  display:inline-flex;align-items:center;gap:5px;padding:4px 10px;
+  border-radius:7px;font-size:11.5px;font-weight:600;
+}
+.badge-success{background:rgba(16,185,129,.12);color:var(--success)}
+.badge-warning{background:rgba(245,158,11,.12);color:var(--accent-500)}
+.badge-danger{background:rgba(239,68,68,.12);color:var(--danger)}
+.badge-info{background:rgba(59,130,246,.12);color:var(--info)}
+.badge-primary{background:var(--primary-50);color:var(--primary)}
+[data-theme="dark"] .badge-primary{background:rgba(79,70,229,.2)}
+
+/* table */
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{text-align:right;font-weight:700;color:var(--muted);font-size:12.5px;padding:12px 14px;border-bottom:1px solid var(--line)}
+td{padding:14px;border-bottom:1px solid var(--line-2)}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--surface-2)}
+
+/* toast */
+.toast{
+  position:fixed;bottom:24px;right:50%;transform:translateX(50%) translateY(100px);
+  background:var(--ink);color:#fff;padding:14px 22px;border-radius:12px;
+  font-size:14px;font-weight:500;box-shadow:var(--shadow-lg);z-index:500;
+  display:flex;align-items:center;gap:10px;opacity:0;transition:all .3s;
+}
+.toast.show{transform:translateX(50%) translateY(0);opacity:1}
+.toast svg{width:18px;height:18px;color:var(--success)}
+
+/* avatar gradient variants */
+.av-1{background:linear-gradient(135deg,#4f46e5,#7c3aed)}
+.av-2{background:linear-gradient(135deg,#0ea5e9,#06b6d4)}
+.av-3{background:linear-gradient(135deg,#f59e0b,#f97316)}
+.av-4{background:linear-gradient(135deg,#10b981,#059669)}
+.av-5{background:linear-gradient(135deg,#ef4444,#ec4899)}
+</style>
+</head>
+<body>
+
+<!-- ============================================================
+     ICON SPRITE
+     ============================================================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<defs>
+  <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></symbol>
+  <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+  <symbol id="i-arrow-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></symbol>
+  <symbol id="i-arrow-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></symbol>
+  <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></symbol>
+  <symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></symbol>
+  <symbol id="i-brain" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.5 2A2.5 2.5 0 0 1 12 4.5v15a2.5 2.5 0 0 1-4.96.44 2.5 2.5 0 0 1-2.96-3.08 3 3 0 0 1-.34-5.58 2.5 2.5 0 0 1 1.32-4.24 2.5 2.5 0 0 1 1.98-3A2.5 2.5 0 0 1 9.5 2z"/><path d="M14.5 2A2.5 2.5 0 0 0 12 4.5v15a2.5 2.5 0 0 0 4.96.44 2.5 2.5 0 0 0 2.96-3.08 3 3 0 0 0 .34-5.58 2.5 2.5 0 0 0-1.32-4.24 2.5 2.5 0 0 0-1.98-3A2.5 2.5 0 0 0 14.5 2z"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+  <symbol id="i-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></symbol>
+  <symbol id="i-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></symbol>
+  <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-telegram" viewBox="0 0 24 24" fill="currentColor"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></symbol>
+  <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></symbol>
+  <symbol id="i-linkedin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+  <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></symbol>
+  <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></symbol>
+  <symbol id="i-trash" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></symbol>
+  <symbol id="i-trend-up" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+  <symbol id="i-zap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+  <symbol id="i-graduation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 3 3 6 3s6-1 6-3v-5"/></symbol>
+  <symbol id="i-video" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></symbol>
+  <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></symbol>
+  <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+  <symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></symbol>
+</defs>
+</svg>
+
+<!-- ============================================================
+     PUBLIC NAVBAR
+     ============================================================ -->
+<nav class="nav" id="nav">
+  <div class="container nav-inner">
+    <a class="brand" onclick="showView('home')">
+      <span class="brand-mark">ع</span>
+      <span class="brand-name">علی هاشمیان<small>پلتفرم منتورا</small></span>
+    </a>
+    <div class="nav-links" id="navLinks">
+      <a class="nav-link active" data-nav="home" onclick="showView('home')">خانه</a>
+      <a class="nav-link" data-nav="resume" onclick="showView('resume')">رزومه</a>
+      <a class="nav-link" data-nav="services" onclick="showView('services')">خدمات</a>
+      <a class="nav-link" data-nav="articles" onclick="showView('articles')">مقالات</a>
+      <a class="nav-link" data-nav="contact" onclick="showView('contact')">تماس</a>
+    </div>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" onclick="toggleTheme()" title="تغییر تم">
+        <svg id="themeIcon"><use href="#i-moon"/></svg>
+      </button>
+      <button class="btn btn-outline btn-sm" onclick="showView('login')">ورود</button>
+      <button class="btn btn-primary btn-sm" onclick="showView('login')">ثبت‌نام</button>
+      <button class="icon-btn nav-toggle" onclick="toggleMobile(true)">
+        <svg><use href="#i-menu"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- mobile menu -->
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-head">
+    <span class="brand"><span class="brand-mark">ع</span> علی هاشمیان</span>
+    <button class="icon-btn" onclick="toggleMobile(false)"><svg><use href="#i-x"/></svg></button>
+  </div>
+  <a onclick="showView('home');toggleMobile(false)">خانه</a>
+  <a onclick="showView('resume');toggleMobile(false)">رزومه</a>
+  <a onclick="showView('services');toggleMobile(false)">خدمات</a>
+  <a onclick="showView('articles');toggleMobile(false)">مقالات</a>
+  <a onclick="showView('contact');toggleMobile(false)">تماس</a>
+  <a onclick="showView('login');toggleMobile(false)" class="mt-4" style="background:var(--primary-50);color:var(--primary);font-weight:700">ورود / ثبت‌نام</a>
+</div>
+
+<!-- ============================================================
+     VIEW: HOME
+     ============================================================ -->
+<main class="view active" id="view-home">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="container hero-grid">
+      <div>
+        <div class="hero-badge">
+          <span class="dot-live"></span>
+          پذیرش دانش‌آموز دوره جدید کنکور ۱۴۰۵ — ظرفیت محدود
+        </div>
+        <h1>مسیر حرفه‌ای کنکور<br>با <span class="gradient-text">علی هاشمیان</span></h1>
+        <p class="lead">
+          مشاور و مدرس کنکور، فارغ‌التحصیل کارشناسی ارشد مهندسی نرم‌افزار از دانشگاه صنعتی شریف و دانشجوی دکتری همین دانشگاه. برنامه‌ریزی شخصی‌سازی‌شده، پیگیری مستمر و آزمون‌های آنلاین برای رسیدن به رتبه برتر.
+        </p>
+        <div class="hero-cta">
+          <button class="btn btn-primary btn-lg" onclick="showView('services')">
+            شروع مشاوره
+            <svg><use href="#i-arrow-left"/></svg>
+          </button>
+          <button class="btn btn-outline btn-lg" onclick="showView('resume')">
+            مشاهده رزومه
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="num gradient-text">+۸</div><div class="lbl">سال سابقه تدریس</div></div>
+          <div class="hero-stat"><div class="num gradient-text">+۵۰۰</div><div class="lbl">دانش‌آموز موفق</div></div>
+          <div class="hero-stat"><div class="num gradient-text">+۹۰٪</div><div class="lbl">رضایت دانش‌آموزان</div></div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-card">
+          <div class="hero-card-head">
+            <div class="avatar">ع</div>
+            <div>
+              <h4>علی هاشمیان</h4>
+              <span>مشاور و مدرس کنکور · شریف</span>
+            </div>
+          </div>
+          <div class="mini-row"><span class="muted">آزمون بعدی</span><span class="v">آزمون جامع ۳ — ۲۵ مرداد</span></div>
+          <div class="mini-row"><span class="muted">ساعت مطالعه هفته</span><span class="v">۴۲ ساعت</span></div>
+          <div class="mini-row"><span class="muted">میانگین تراز</span><span class="v">۹۸۴۰</span></div>
+          <div class="mini-row"><span class="muted">تکالیف انجام‌شده</span><span class="v">۸۷٪</span></div>
+          <div class="mini-row"><span class="muted">رتبه پیش‌بینی‌شده</span><span class="v" style="color:var(--success)">زیر ۱۰۰۰</span></div>
+        </div>
+        <div class="float-badge fb-1">
+          <span class="ic"><svg><use href="#i-trend-up"/></svg></span>
+          <div><div style="font-size:15px">+۱۸٪</div><div style="font-size:11px;color:var(--muted);font-weight:500">رشد تراز</div></div>
+        </div>
+        <div class="float-badge fb-2">
+          <span class="ic"><svg><use href="#i-award"/></svg></span>
+          <div><div style="font-size:15px">رتبه ۱۲۰</div><div style="font-size:11px;color:var(--muted);font-weight:500">آزمون آخر</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust">
+    <div class="container trust-inner">
+      <div class="trust-item"><span class="ti-ic"><svg><use href="#i-graduation"/></svg></span> فارغ‌التحصیل صنعتی شریف</div>
+      <div class="trust-item"><span class="ti-ic"><svg><use href="#i-award"/></svg></span> دانشجوی دکتری مهندسی نرم‌افزار</div>
+      <div class="trust-item"><span class="ti-ic"><svg><use href="#i-users"/></svg></span> +۵۰۰ دانش‌آموز موفق</div>
+      <div class="trust-item"><span class="ti-ic"><svg><use href="#i-zap"/></svg></span> پلتفرم اختصاصی آنلاین</div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="section">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">امکانات پلتفرم</span>
+        <h2 class="section-title">همه‌چیز برای موفقیت در کنکور</h2>
+        <p class="section-sub">از برنامه‌ریزی روزانه تا آزمون آنلاین و تحلیل کارنامه — همه در یک پلتفرم شخصی‌سازی‌شده.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card card-hover card-accent">
+          <div class="feature-icon fi-1"><svg><use href="#i-target"/></svg></div>
+          <h3>برنامه‌ریزی شخصی</h3>
+          <p>برنامه مطالعاتی هفتگی متناسب با سطح، هدف و زمان هر دانش‌آموز به‌صورت اختصاصی تنظیم می‌شود.</p>
+        </div>
+        <div class="card card-hover card-accent">
+          <div class="feature-icon fi-2"><svg><use href="#i-clipboard"/></svg></div>
+          <h3>ثبت گزارش‌کار روزانه</h3>
+          <p>عملکرد روزانه خود را ثبت کنید و بازخورد دقیق مشاور را همان روز دریافت کنید.</p>
+        </div>
+        <div class="card card-hover card-accent">
+          <div class="feature-icon fi-3"><svg><use href="#i-brain"/></svg></div>
+          <h3>بانک تست هوشمند</h3>
+          <p>هزاران تست طبقه‌بندی‌شده بر اساس درس، مبحث و دشتی برای تمرین هدفمند.</p>
+        </div>
+        <div class="card card-hover card-accent">
+          <div class="feature-icon fi-4"><svg><use href="#i-edit"/></svg></div>
+          <h3>آزمون آنلاین</h3>
+          <p>آزمون‌های دوره‌ای با تایمر، کارنامه تحلیلی و رتبه تخمینی در میان سایر دانش‌آموزان.</p>
+        </div>
+        <div class="card card-hover card-accent">
+          <div class="feature-icon fi-5"><svg><use href="#i-chart"/></svg></div>
+          <h3>تحلیل پیشرفت</h3>
+          <p>نمودارهای روند پیشرفت، نقاط قوت و ضعف شما را به‌صورت بصری نمایش می‌دهد.</p>
+        </div>
+        <div class="card card-hover card-accent">
+          <div class="feature-icon fi-6"><svg><use href="#i-file"/></svg></div>
+          <h3>جزوات و محتوا</h3>
+          <p>دسترسی به جزوات اختصاصی، فایل‌های آموزشی و مقالات تحلیلی استاد.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section" style="background:var(--surface-2)">
+    <div class="container about-grid">
+      <div class="about-img">
+        <div class="about-img-placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a7 7 0 0 1 14 0v1"/></svg>
+        </div>
+        <div class="about-exp">
+          <div class="num">+۸</div>
+          <div class="txt">سال تجربه<br>مشاوره و تدریس</div>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow">درباره استاد</span>
+        <h2 class="section-title">علی هاشمیان</h2>
+        <p class="section-sub" style="margin-right:0">
+          علی هاشمیان فارغ‌التحصیل کارشناسی ارشد مهندسی نرم‌افزار از دانشگاه صنعتی شریف و در حال حاضر دانشجوی دکتری مهندسی نرم‌افزار در همین دانشگاه است. او بیش از ۸ سال است که به‌صورت تخصصی در حوزه مشاوره و تدریس کنکور فعالیت می‌کند و صدها دانش‌آموز را به رتبه‌های برتر کنکور رسانده است.
+        </p>
+        <div class="timeline mt-6">
+          <div class="tl-item">
+            <div class="tl-year">۱۴۰۲ — اکنون</div>
+            <h4>دانشجوی دکتری مهندسی نرم‌افزار</h4>
+            <p>دانشگاه صنعتی شریف — حوزه پژوهش: مهندسی نرم‌افزار تجربی</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">۱۳۹۹ — ۱۴۰۲</div>
+            <h4>کارشناسی ارشد مهندسی نرم‌افزار</h4>
+            <p>دانشگاه صنعتی شریف — معدل الف</p>
+          </div>
+          <div class="tl-item">
+            <div class="tl-year">۱۳۹۷ — اکنون</div>
+            <h4>مشاور و مدرس کنکور</h4>
+            <p>بیش از ۵۰۰ دانش‌آموز با رتبه‌های زیر ۱۰۰۰ کشوری</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="section">
+    <div class="container">
+      <div class="stats">
+        <div class="grid grid-4">
+          <div class="stat-cell"><div class="n">+۵۰۰</div><div class="l">دانش‌آموز موفق</div></div>
+          <div class="stat-cell"><div class="n">+۸</div><div class="l">سال سابقه</div></div>
+          <div class="stat-cell"><div class="n">+۱۲۰</div><div class="l">رتبه زیر ۱۰۰۰ کشوری</div></div>
+          <div class="stat-cell"><div class="n">+۹۰٪</div><div class="l">رضایت دانش‌آموزان</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="section" style="background:var(--surface-2)">
+    <div class="container">
+      <div class="section-head center">
+        <span class="eyebrow">نظرات دانش‌آموزان</span>
+        <h2 class="section-title">تجربه همراهان منتورا</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card testi">
+          <div class="testi-stars">
+            <svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg>
+          </div>
+          <p>«برنامه‌ریزی دقیق و پیگیری مستمر استاد هاشمیان واقعاً مسیر مطالعه‌ام را متحول کرد. تونستم از تراز ۸۵۰۰ به ۱۰۵۰۰ برسم.»</p>
+          <div class="testi-user">
+            <div class="testi-avatar ta-1">م</div>
+            <div><h5>محمد رضایی</h5><span>رتبه ۲۴۰ کنکور ۱۴۰۳</span></div>
+          </div>
+        </div>
+        <div class="card testi">
+          <div class="testi-stars">
+            <svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg>
+          </div>
+          <p>«آزمون‌های آنلاین و کارنامه تحلیلی پلتفرم عالی بود. دقیقاً می‌فهمیدم کجاها ضعف دارم و باید چی کار کنم.»</p>
+          <div class="testi-user">
+            <div class="testi-avatar ta-2">س</div>
+            <div><h5>سارا احمدی</h5><span>رتبه ۸۹۰ کنکور ۱۴۰۳</span></div>
+          </div>
+        </div>
+        <div class="card testi">
+          <div class="testi-stars">
+            <svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg>
+          </div>
+          <p>«بازخورد گزارش‌کارهای روزانه استاد بهم انگیزه می‌داد و نمی‌ذاشت از مسیر خارج بشم. واقعاً دلسوز و حرفه‌ای هستن.»</p>
+          <div class="testi-user">
+            <div class="testi-avatar ta-3">ع</div>
+            <div><h5>علی محمدی</h5><span>رتبه ۵۶۰ کنکور ۱۴۰۳</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="section">
+    <div class="container">
+      <div class="cta-box">
+        <h2>آماده‌ای مسیر موفقیت رو شروع کنی؟</h2>
+        <p>همین حالا ثبت‌نام کن و اولین برنامه مطالعاتی اختصاصی‌ات رو دریافت کن.</p>
+        <div class="flex gap-3 items-center justify-center" style="flex-wrap:wrap">
+          <button class="btn btn-white btn-lg" onclick="showView('login')">ثبت‌نام رایگان</button>
+          <button class="btn btn-outline btn-lg" style="border-color:rgba(255,255,255,.4);color:#fff" onclick="showView('contact')">
+            مشاوره تلفنی رایگان
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================
+     VIEW: RESUME
+     ============================================================ -->
+<main class="view" id="view-resume">
+  <section class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a onclick="showView('home')">خانه</a>
+        <svg><use href="#i-arrow-left"/></svg>
+        <span>رزومه</span>
+      </div>
+      <h1>رزومه و سوابق آکادمیک</h1>
+      <p>مسیر علمی، پژوهشی و حرفه‌ای علی هاشمیان در یک نگاه.</p>
+    </div>
+  </section>
+  <section class="section-sm">
+    <div class="container resume-layout">
+      <!-- SIDEBAR -->
+      <aside class="resume-side">
+        <div class="card profile-card">
+          <div class="avatar-lg">ع</div>
+          <h3>علی هاشمیان</h3>
+          <div class="role">مشاور و مدرس کنکور</div>
+          <div class="profile-meta">
+            <div class="pm-row"><svg><use href="#i-graduation"/></svg><span>دانشجوی دکتری — شریف</span></div>
+            <div class="pm-row"><svg><use href="#i-pin"/></svg><span>تهران، ایران</span></div>
+            <div class="pm-row"><svg><use href="#i-mail"/></svg><span>ali@hashemian.dev</span></div>
+            <div class="pm-row"><svg><use href="#i-phone"/></svg><span>۰۹۱۲ ۰۰۰ ۰۰۰۰</span></div>
+            <div class="pm-row"><svg><use href="#i-globe"/></svg><span>hashemian.dev</span></div>
+          </div>
+          <div class="social" style="justify-content:center;margin-top:18px">
+            <a><svg><use href="#i-telegram"/></svg></a>
+            <a><svg><use href="#i-instagram"/></svg></a>
+            <a><svg><use href="#i-linkedin"/></svg></a>
+            <a><svg><use href="#i-github"/></svg></a>
+          </div>
+        </div>
+        <div class="card mt-4">
+          <h4 style="font-size:15px;margin-bottom:14px">مهارت‌ها</h4>
+          <div class="skill-bar">
+            <div class="skill-bar-top"><span>مشاوره کنکور</span><span>۹۸٪</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-w="98"></div></div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-bar-top"><span>تدریس ریاضی و فیزیک</span><span>۹۵٪</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-w="95"></div></div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-bar-top"><span>برنامه‌ریزی مطالعاتی</span><span>۹۶٪</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-w="96"></div></div>
+          </div>
+          <div class="skill-bar">
+            <div class="skill-bar-top"><span>مهندسی نرم‌افزار</span><span>۹۰٪</span></div>
+            <div class="skill-bar-track"><div class="skill-bar-fill" data-w="90"></div></div>
+          </div>
+        </div>
+        <div class="card mt-4">
+          <h4 style="font-size:15px;margin-bottom:14px">زبان‌ها</h4>
+          <div class="mini-row"><span>فارسی</span><span class="v">مادری</span></div>
+          <div class="mini-row"><span>انگلیسی</span><span class="v">پیشرفته (C1)</span></div>
+          <div class="mini-row"><span>عربی</span><span class="v">متوسط</span></div>
+        </div>
+        <button class="btn btn-primary btn-block mt-4">
+          <svg><use href="#i-download"/></svg>
+          دانلود رزومه PDF
+        </button>
+      </aside>
+
+      <!-- MAIN -->
+      <div>
+        <div class="resume-block">
+          <div class="resume-block-head">
+            <div class="ic"><svg><use href="#i-user"/></svg></div>
+            <h3>معرفی</h3>
+          </div>
+          <div class="card">
+            <p style="line-height:2;color:var(--ink-2)">
+              علی هاشمیان، فارغ‌التحصیل کارشناسی ارشد مهندسی نرم‌افزار از دانشگاه صنعتی شریف و دانشجوی دکتری همین رشته در دانشگاه شریف. با بیش از ۸ سال سابقه تدریس و مشاوره تخصصی کنکور، تاکنون بیش از ۵۰۰ دانش‌آموز را در مسیر رسیدن به رتبه‌های برتر همراهی کرده است. تمرکز اصلی او بر برنامه‌ریزی شخصی‌سازی‌شده، پیگیری مستمر و تحلیل داده‌محور عملکرد دانش‌آموزان است.
+            </p>
+          </div>
+        </div>
+
+        <div class="resume-block">
+          <div class="resume-block-head">
+            <div class="ic"><svg><use href="#i-graduation"/></svg></div>
+            <h3>سوابق تحصیلی</h3>
+          </div>
+          <div class="card">
+            <div class="resume-entry">
+              <div class="yr">۱۴۰۲ — اکنون</div>
+              <div>
+                <h4>دکتری مهندسی نرم‌افزار</h4>
+                <div class="org">دانشگاه صنعتی شریف</div>
+                <p>پژوهش در حوزه مهندسی نرم‌افزار تجربی، تحلیل داده‌های آموزشی و سیستم‌های تطبیقی هوشمند.</p>
+              </div>
+            </div>
+            <div class="resume-entry">
+              <div class="yr">۱۳۹۹ — ۱۴۰۲</div>
+              <div>
+                <h4>کارشناسی ارشد مهندسی نرم‌افزار</h4>
+                <div class="org">دانشگاه صنعتی شریف — معدل الف</div>
+                <p>پایان‌نامه در زمینه کاربرد روش‌های یادگیری ماشین در پیش‌بینی عملکرد تحصیلی.</p>
+              </div>
+            </div>
+            <div class="resume-entry">
+              <div class="yr">۱۳۹۵ — ۱۳۹۹</div>
+              <div>
+                <h4>کارشناسی مهندسی کامپیوتر</h4>
+                <div class="org">دانشگاه صنعتی شریف</div>
+                <p>فارغ‌التحصیل رتبه برتر، فعال در انجمن علمی و برگزیده المپیاد دانشجویی.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="resume-block">
+          <div class="resume-block-head">
+            <div class="ic"><svg><use href="#i-briefcase"/></svg></div>
+            <h3>سوابق حرفه‌ای</h3>
+          </div>
+          <div class="card">
+            <div class="resume-entry">
+              <div class="yr">۱۳۹۷ — اکنون</div>
+              <div>
+                <h4>مشاور و مدرس ارشد کنکور</h4>
+                <div class="org">پلتفرم منتورا (بنیان‌گذار)</div>
+                <p>مشاوره تخصصی، طراحی برنامه مطالعاتی، تدریس و هدایت بیش از ۵۰۰ دانش‌آموز به رتبه‌های برتر کشوری.</p>
+              </div>
+            </div>
+            <div class="resume-entry">
+              <div class="yr">۱۴۰۱ — اکنون</div>
+              <div>
+                <h4>پژوهشگر و دستیار تدریس</h4>
+                <div class="org">دانشگاه صنعتی شریف</div>
+                <p>تدریسیار دروس مهندسی نرم‌افزار و پایگاه‌داده، و پژوهش در حوزه Learning Analytics.</p>
+              </div>
+            </div>
+            <div class="resume-entry">
+              <div class="yr">۱۴۰۰ — ۱۴۰۲</div>
+              <div>
+                <h4>مهندس نرم‌افزار</h4>
+                <div class="org">شرکت‌های فناور شریف</div>
+                <p>توسعه پلتفرم‌های مقیاس‌پذیر وب با Node.js، React و معماری میکروسرویس.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="resume-block">
+          <div class="resume-block-head">
+            <div class="ic"><svg><use href="#i-award"/></svg></div>
+            <h3>افتخارات و دستاوردها</h3>
+          </div>
+          <div class="card">
+            <div class="resume-entry">
+              <div class="yr">۱۴۰۲</div>
+              <div><h4>پذیرش در مقطع دکتری بدون آزمون</h4><div class="org">دانشگاه صنعتی شریف</div></div>
+            </div>
+            <div class="resume-entry">
+              <div class="yr">۱۴۰۱</div>
+              <div><h4>برگزیده جشنواره ایده‌های برتر آموزشی</h4><div class="org">برای طراحی پلتفرم منتورا</div></div>
+            </div>
+            <div class="resume-entry">
+              <div class="yr">۱۳۹۹</div>
+              <div><h4>رتبه برتر دوره کارشناسی ارشد</h4><div class="org">دانشکده مهندسی کامپیوتر شریف</div></div>
+            </div>
+            <div class="resume-entry">
+              <div class="yr">۱۳۹۸</div>
+              <div><h4>مدال برنز المپیاد دانشجویی مهندسی کامپیوتر</h4><div class="org">کشوری</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="resume-block">
+          <div class="resume-block-head">
+            <div class="ic"><svg><use href="#i-book"/></svg></div>
+            <h3>پژوهش و انتشارات</h3>
+          </div>
+          <div class="card">
+            <div class="resume-entry">
+              <div class="yr">۲۰۲۵</div>
+              <div>
+                <h4>یادگیری تطبیقی در سیستم‌های آموزشی آنلاین</h4>
+                <div class="org">ژورنال بین‌المللی Educational Data Mining</div>
+              </div>
+            </div>
+            <div class="resume-entry">
+              <div class="yr">۲۰۲۴</div>
+              <div>
+                <h4>پیش‌بینی عملکرد کنکور با داده‌های رفتاری دانش‌آموزان</h4>
+                <div class="org">کنفرانس بین‌المللی کامپیوتر ایران</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================
+     VIEW: SERVICES
+     ============================================================ -->
+<main class="view" id="view-services">
+  <section class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a onclick="showView('home')">خانه</a>
+        <svg><use href="#i-arrow-left"/></svg>
+        <span>خدمات</span>
+      </div>
+      <h1>خدمات مشاوره و آموزش</h1>
+      <p>پلن‌های متنوع متناسب با نیاز و مرحله آمادگی هر دانش‌آموز.</p>
+    </div>
+  </section>
+  <section class="section-sm">
+    <div class="container">
+      <div class="grid grid-3" style="align-items:start">
+        <div class="card price-card">
+          <div class="price-name">پلن پایه</div>
+          <div class="price-desc">برای دانش‌آموزانی که تازه شروع می‌کنند</div>
+          <div class="price-amount"><span class="a">۱٫۲</span><span class="u">میلیون تومان / ماهانه</span></div>
+          <ul class="price-features">
+            <li><svg><use href="#i-check"/></svg> برنامه مطالعاتی هفتگی</li>
+            <li><svg><use href="#i-check"/></svg> ثبت گزارش‌کار در پلتفرم</li>
+            <li><svg><use href="#i-check"/></svg> دسترسی به بانک تست</li>
+            <li><svg><use href="#i-check"/></svg> یک آزمون آنلاین در ماه</li>
+            <li class="off"><svg><use href="#i-x"/></svg> تماس ویدیویی هفتگی</li>
+            <li class="off"><svg><use href="#i-x"/></svg> تحلیل اختصاصی کارنامه</li>
+          </ul>
+          <button class="btn btn-outline btn-block" onclick="showView('login')">انتخاب پلن</button>
+        </div>
+
+        <div class="card price-card featured">
+          <div class="price-popular">محبوب‌ترین</div>
+          <div class="price-name">پلن حرفه‌ای</div>
+          <div class="price-desc">محبوب‌ترین انتخاب دانش‌آموزان جدی</div>
+          <div class="price-amount"><span class="a gradient-text">۲٫۵</span><span class="u">میلیون تومان / ماهانه</span></div>
+          <ul class="price-features">
+            <li><svg><use href="#i-check"/></svg> برنامه‌ریزی کاملاً اختصاصی</li>
+            <li><svg><use href="#i-check"/></svg> بازخورد روزانه گزارش‌کار</li>
+            <li><svg><use href="#i-check"/></svg> دسترسی کامل بانک تست</li>
+            <li><svg><use href="#i-check"/></svg> ۴ آزمون آنلاین در ماه</li>
+            <li><svg><use href="#i-check"/></svg> تماس ویدیویی هفتگی</li>
+            <li><svg><use href="#i-check"/></svg> تحلیل اختصاصی کارنامه</li>
+          </ul>
+          <button class="btn btn-primary btn-block" onclick="showView('login')">انتخاب پلن</button>
+        </div>
+
+        <div class="card price-card">
+          <div class="price-name">پلن VIP</div>
+          <div class="price-desc">حداکثر همراهی تا روز کنکور</div>
+          <div class="price-amount"><span class="a">۴٫۸</span><span class="u">میلیون تومان / ماهانه</span></div>
+          <ul class="price-features">
+            <li><svg><use href="#i-check"/></svg> تمام امکانات پلن حرفه‌ای</li>
+            <li><svg><use href="#i-check"/></svg> دو تماس ویدیویی در هفته</li>
+            <li><svg><use href="#i-check"/></svg> پشتیبانی فوری تلگرام</li>
+            <li><svg><use href="#i-check"/></svg> دسترسی به تمام جزوات</li>
+            <li><svg><use href="#i-check"/></svg> رفع اشکال نامحدود</li>
+            <li><svg><use href="#i-check"/></svg> تضمین کیفیت بازگشت وجه</li>
+          </ul>
+          <button class="btn btn-outline btn-block" onclick="showView('login')">انتخاب پلن</button>
+        </div>
+      </div>
+
+      <div class="section-head center mt-6" style="margin-top:80px">
+        <span class="eyebrow">سایر خدمات</span>
+        <h2 class="section-title" style="font-size:28px">خدمات تکمیلی</h2>
+      </div>
+      <div class="grid grid-3">
+        <div class="card card-hover"><div class="feature-icon fi-1"><svg><use href="#i-users"/></svg></div><h3>مشاوره تک‌جلسه</h3><p>یک جلسه ۹۰ دقیقه‌ای برای ارزیابی وضعیت و دریافت نقشه راه.</p></div>
+        <div class="card card-hover"><div class="feature-icon fi-3"><svg><use href="#i-video"/></svg></div><h3>کلاس خصوصی آنلاین</h3><p>تدریس مفهومی ریاضی و فیزیک کنکور به‌صورت خصوصی و نیمه‌خصوصی.</p></div>
+        <div class="card card-hover"><div class="feature-icon fi-5"><svg><use href="#i-file"/></svg></div><h3>کارگاه جمع‌بندی</h3><p>کارگاه‌های فشرده پیش از کنکور با تمرکز بر نقاط کلیدی و تست‌زنی.</p></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================
+     VIEW: ARTICLES
+     ============================================================ -->
+<main class="view" id="view-articles">
+  <section class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a onclick="showView('home')">خانه</a>
+        <svg><use href="#i-arrow-left"/></svg>
+        <span>مقالات</span>
+      </div>
+      <h1>مقالات و محتوای آموزشی</h1>
+      <p>یادداشت‌ها، تحلیل‌ها و راهکارهای عملی برای موفقیت در کنکور.</p>
+    </div>
+  </section>
+  <section class="section-sm">
+    <div class="container">
+      <div class="search-box">
+        <svg><use href="#i-search"/></svg>
+        <input placeholder="جستجو در مقالات..."/>
+      </div>
+      <div class="filter-bar">
+        <button class="chip active">همه</button>
+        <button class="chip">برنامه‌ریزی</button>
+        <button class="chip">روش مطالعه</button>
+        <button class="chip">تست‌زنی</button>
+        <button class="chip">روانشناسی کنکور</button>
+        <button class="chip">تحلیل آزمون</button>
+        <button class="chip">فنی و مهندسی</button>
+      </div>
+      <div class="grid grid-3" id="articlesGrid">
+        <!-- filled by JS for brevity but also static -->
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================
+     VIEW: ARTICLE DETAIL
+     ============================================================ -->
+<main class="view" id="view-article">
+  <section class="page-header" style="padding-bottom:32px">
+    <div class="container">
+      <div class="breadcrumb">
+        <a onclick="showView('home')">خانه</a>
+        <svg><use href="#i-arrow-left"/></svg>
+        <a onclick="showView('articles')">مقالات</a>
+        <svg><use href="#i-arrow-left"/></svg>
+        <span>مقاله</span>
+      </div>
+    </div>
+  </section>
+  <section class="section-sm" style="padding-top:32px">
+    <div class="container">
+      <article class="article-detail">
+        <span class="eyebrow">برنامه‌ریزی</span>
+        <h1>چگونه یک برنامه مطالعاتی واقع‌بینانه برای کنکور تنظیم کنیم؟</h1>
+        <div class="article-meta" style="margin-bottom:24px">
+          <span><svg><use href="#i-calendar"/></svg> ۱۵ مرداد ۱۴۰۴</span>
+          <span><svg><use href="#i-clock"/></svg> ۸ دقیقه مطالعه</span>
+          <span><svg><use href="#i-user"/></svg> علی هاشمیان</span>
+        </div>
+        <div class="article-hero">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <p class="lead">بسیاری از دانش‌آموزان در شروع مسیر کنکور، با انبوهی از منابع و سردرگمی مواجه می‌شوند. رمز موفقیت، یک برنامه واقع‌بینانه و قابل اجراست که با شرایط شخصی شما هماهنگ باشد.</p>
+        <h2>۱. شناخت دقیق وضعیت فعلی</h2>
+        <p>قبل از هر چیز باید بدانید کجا ایستاده‌اید. یک آزمون تشخیصی بدهید، نقاط قوت و ضعف را مشخص کنید و بر اساس آن هدف‌گذاری کنید. بدون شناخت واقعی، هر برنامه‌ای محکوم به شکست است.</p>
+        <blockquote>«بهترین برنامه، برنامه‌ای است که اجرا شود — نه برنامه‌ای که روی کاغذ عالی به نظر برسد.»</blockquote>
+        <h2>۲. تعیین هدف کوتاه‌مدت و بلندمدت</h2>
+        <p>هدف بزرگ را به اهداف کوچک‌تر هفتگی و روزانه تقسیم کنید. هر هفته باید دقیقاً بدانید چه مباحثی را باید تمام کنید و چه تعدادی تست باید بزنید.</p>
+        <h2>۳. تعادل بین دروس</h2>
+        <p>زمان مطالعه باید متناسب با ضریب درس و ضعف شما توزیع شود. اشتباه رایج این است که تمام وقت را روی دروس مورد علاقه صرف کنید و دروس ضعیف را نادیده بگیرید.</p>
+        <h2>۴. استراحت و مرور</h2>
+        <p>برنامه باید شامل زمان استراحت، خواب کافی و جلسات مرور منظم باشد. بدون مرور، بیش از ۷۰٪ مطالب در طول یک هفته فراموش می‌شوند.</p>
+        <div class="flex gap-3 mt-6" style="flex-wrap:wrap">
+          <button class="btn btn-primary" onclick="showView('login')">دریافت برنامه اختصاصی</button>
+          <button class="btn btn-outline" onclick="showView('articles')">مقالات بیشتر</button>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================
+     VIEW: CONTACT
+     ============================================================ -->
+<main class="view" id="view-contact">
+  <section class="page-header">
+    <div class="container">
+      <div class="breadcrumb">
+        <a onclick="showView('home')">خانه</a>
+        <svg><use href="#i-arrow-left"/></svg>
+        <span>تماس</span>
+      </div>
+      <h1>تماس و همکاری</h1>
+      <p>برای مشاوره، همکاری یا هر سؤالی در ارتباط باشید.</p>
+    </div>
+  </section>
+  <section class="section-sm">
+    <div class="container contact-grid">
+      <div class="card contact-info-card">
+        <h3 style="font-size:18px;margin-bottom:8px">اطلاعات تماس</h3>
+        <p class="muted text-sm" style="margin-bottom:18px">در ساعات اداری پاسخگوی شما هستیم.</p>
+        <div class="ci-item">
+          <div class="ci-ic"><svg><use href="#i-phone"/></svg></div>
+          <div><h5>تلفن</h5><p>۰۲۱ ۰۰۰۰ ۰۰۰۰ — ۰۹۱۲ ۰۰۰ ۰۰۰۰</p></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-ic"><svg><use href="#i-mail"/></svg></div>
+          <div><h5>ایمیل</h5><p>ali@hashemian.dev</p></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-ic"><svg><use href="#i-telegram"/></svg></div>
+          <div><h5>تلگرام</h5><p>@mentora_support</p></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-ic"><svg><use href="#i-pin"/></svg></div>
+          <div><h5>آدرس</h5><p>تهران، خیابان آزادی، دانشگاه صنعتی شریف، دانشکده کامپیوتر</p></div>
+        </div>
+        <div class="ci-item">
+          <div class="ci-ic"><svg><use href="#i-clock"/></svg></div>
+          <div><h5>ساعات پاسخگویی</h5><p>شنبه تا چهارشنبه — ۹ تا ۱۸</p></div>
+        </div>
+        <div class="social" style="margin-top:20px">
+          <a><svg><use href="#i-telegram"/></svg></a>
+          <a><svg><use href="#i-instagram"/></svg></a>
+          <a><svg><use href="#i-linkedin"/></svg></a>
+          <a><svg><use href="#i-github"/></svg></a>
+        </div>
+      </div>
+      <div class="card form-card">
+        <h3 style="font-size:18px;margin-bottom:20px">ارسال پیام</h3>
+        <div class="form-row">
+          <div class="field"><label>نام و نام خانوادگی</label><input placeholder="نام شما"></div>
+          <div class="field"><label>شماره تماس</label><input placeholder="۰۹۱۲ ۰۰۰ ۰۰۰۰"></div>
+        </div>
+        <div class="field"><label>ایمیل</label><input type="email" placeholder="email@example.com"></div>
+        <div class="field">
+          <label>موضوع</label>
+          <select>
+            <option>درخواست مشاوره</option>
+            <option>ثبت‌نام در پلن</option>
+            <option>همکاری</option>
+            <option>سایر موارد</option>
+          </select>
+        </div>
+        <div class="field"><label>پیام</label><textarea placeholder="پیام خود را بنویسید..."></textarea></div>
+        <button class="btn btn-primary btn-lg btn-block" onclick="toast('پیام شما با موفقیت ارسال شد.')">ارسال پیام</button>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- ============================================================
+     VIEW: LOGIN
+     ============================================================ -->
+<main class="view" id="view-login">
+  <div class="auth-wrap">
+    <div class="auth-side">
+      <div class="auth-side-inner">
+        <a class="brand" onclick="showView('home')">
+          <span class="brand-mark" style="background:rgba(255,255,255,.2);box-shadow:none">ع</span>
+          <span class="brand-name" style="color:#fff">علی هاشمیان<small style="color:rgba(255,255,255,.7)">پلتفرم منتورا</small></span>
+        </a>
+        <div>
+          <h2>به خانواده<br>منتورا خوش آمدید</h2>
+          <p>برای دسترسی به برنامه مطالعاتی، آزمون‌ها، بانک تست و پیگیری عملکرد خود وارد شوید.</p>
+        </div>
+      </div>
+      <div class="auth-features">
+        <div class="auth-feat"><span class="ck"><svg><use href="#i-check"/></svg></span> برنامه‌ریزی شخصی‌سازی‌شده</div>
+        <div class="auth-feat"><span class="ck"><svg><use href="#i-check"/></svg></span> آزمون آنلاین با کارنامه تحلیلی</div>
+        <div class="auth-feat"><span class="ck"><svg><use href="#i-check"/></svg></span> پیگیری مستمر توسط استاد</div>
+        <div class="auth-feat"><span class="ck"><svg><use href="#i-check"/></svg></span> دسترسی به جزوات اختصاصی</div>
+      </div>
+    </div>
+    <div class="auth-form-side">
+      <div class="auth-form">
+        <a class="brand" onclick="showView('home')">
+          <span class="brand-mark">ع</span>
+          <span class="brand-name">منتورا</span>
+        </a>
+        <h1>ورود / ثبت‌نام</h1>
+        <p class="sub">برای ادامه شماره موبایل خود را وارد کنید</p>
+        <div class="field">
+          <label>شماره موبایل</label>
+          <input id="phoneInput" type="tel" placeholder="۰۹۱۲ ۰۰۰ ۰۰۰۰" value="0912">
+        </div>
+        <button class="btn btn-primary btn-block btn-lg" onclick="showView('verify')">
+          دریافت کد تایید
+          <svg><use href="#i-arrow-left"/></svg>
+        </button>
+        <div class="auth-divider">یا</div>
+        <button class="btn btn-outline btn-block" onclick="toast('ورود با ایمیل به‌زودی فعال می‌شود.')">
+          <svg><use href="#i-mail"/></svg>
+          ادامه با ایمیل
+        </button>
+        <p class="auth-foot">
+          با ورود، <a>قوانین و مقررات</a> را می‌پذیرید.
+        </p>
+        <div class="text-center mt-4">
+          <a class="btn btn-ghost btn-sm" onclick="showView('home')">بازگشت به سایت</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ============================================================
+     VIEW: VERIFY OTP
+     ============================================================ -->
+<main class="view" id="view-verify">
+  <div class="auth-wrap">
+    <div class="auth-side">
+      <div class="auth-side-inner">
+        <a class="brand" onclick="showView('home')">
+          <span class="brand-mark" style="background:rgba(255,255,255,.2);box-shadow:none">ع</span>
+          <span class="brand-name" style="color:#fff">منتورا</span>
+        </a>
+        <h2>تایید هویت<br>با یک کد کوتاه</h2>
+        <p>کد ۵ رقمی ارسال‌شده به شماره موبایل خود را وارد کنید. این کد تا ۲ دقیقه معتبر است.</p>
+      </div>
+      <div class="auth-features">
+        <div class="auth-feat"><span class="ck"><svg><use href="#i-lock"/></svg></span> ورود امن با کد یکبار مصرف</div>
+        <div class="auth-feat"><span class="ck"><svg><use href="#i-zap"/></svg></span> تایید سریع و آسان</div>
+      </div>
+    </div>
+    <div class="auth-form-side">
+      <div class="auth-form">
+        <a class="brand" onclick="showView('home')">
+          <span class="brand-mark">ع</span>
+          <span class="brand-name">منتورا</span>
+        </a>
+        <h1>کد تایید</h1>
+        <p class="sub">کد ارسال‌شده به <b id="phoneShow">۰۹۱۲ ۰۰۰ ۰۰۰۰</b> را وارد کنید</p>
+        <div class="otp-inputs" id="otpInputs">
+          <input maxlength="1" inputmode="numeric">
+          <input maxlength="1" inputmode="numeric">
+          <input maxlength="1" inputmode="numeric">
+          <input maxlength="1" inputmode="numeric">
+          <input maxlength="1" inputmode="numeric">
+        </div>
+        <button class="btn btn-primary btn-block btn-lg" onclick="enterDashboard()">
+          تایید و ورود
+        </button>
+        <p class="auth-foot">
+          کد را دریافت نکردید؟ <a onclick="toast('کد مجدداً ارسال شد.')">ارسال مجدد</a>
+        </p>
+        <div class="text-center mt-4">
+          <a class="btn btn-ghost btn-sm" onclick="showView('login')">
+            <svg><use href="#i-arrow-left"/></svg>
+            تغییر شماره
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<!-- ============================================================
+     DASHBOARD SHELL (student)
+     ============================================================ -->
+<div class="view" id="view-dashboard">
+  <div class="dash">
+    <!-- SIDEBAR -->
+    <aside class="dash-side" id="dashSide">
+      <a class="brand" onclick="showView('home')">
+        <span class="brand-mark">ع</span>
+        <span class="brand-name">منتورا<small>پنل دانش‌آموز</small></span>
+      </a>
+      <div class="dash-user">
+        <div class="avatar av-1">م</div>
+        <div style="min-width:0">
+          <h5>محمد رضایی</h5>
+          <span>پلن حرفه‌ای</span>
+        </div>
+      </div>
+      <div class="dash-nav-label">اصلی</div>
+      <a class="dash-link active" data-dash="overview" onclick="showDash('overview')">
+        <svg><use href="#i-home"/></svg> داشبورد
+      </a>
+      <a class="dash-link" data-dash="planner" onclick="showDash('planner')">
+        <svg><use href="#i-calendar"/></svg> برنامه هفتگی
+      </a>
+      <a class="dash-link" data-dash="report" onclick="showDash('report')">
+        <svg><use href="#i-clipboard"/></svg> گزارش‌کار روزانه
+        <span class="badge-dot">۱</span>
+      </a>
+      <a class="dash-link" data-dash="qbank" onclick="showDash('qbank')">
+        <svg><use href="#i-brain"/></svg> بانک تست
+      </a>
+      <a class="dash-link" data-dash="exams" onclick="showDash('exams')">
+        <svg><use href="#i-edit"/></svg> آزمون‌ها
+      </a>
+      <a class="dash-link" data-dash="analytics" onclick="showDash('analytics')">
+        <svg><use href="#i-chart"/></svg> تحلیل پیشرفت
+      </a>
+      <a class="dash-link" data-dash="files" onclick="showDash('files')">
+        <svg><use href="#i-file"/></svg> جزوات و فایل‌ها
+      </a>
+
+      <div class="dash-nav-label">حساب</div>
+      <a class="dash-link" onclick="toast('بخش تنظیمات به‌زودی')">
+        <svg><use href="#i-settings"/></svg> تنظیمات
+      </a>
+      <a class="dash-link" onclick="showView('home')">
+        <svg><use href="#i-logout"/></svg> خروج
+      </a>
+
+      <div class="dash-side-foot">
+        <div class="card" style="padding:16px;background:var(--grad-soft);border:none">
+          <h5 style="font-size:13.5px;margin-bottom:6px">نیاز به راهنمایی؟</h5>
+          <p class="text-xs muted" style="margin-bottom:12px">با پشتیبانی منتورا در تماس باشید.</p>
+          <button class="btn btn-primary btn-sm btn-block" onclick="toast('به‌زودی با شما تماس می‌گیریم')">تماس با پشتیبانی</button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div>
+      <!-- top bar -->
+      <div class="dash-main">
+        <div class="dash-top">
+          <div style="display:flex;align-items:center;gap:12px">
+            <button class="icon-btn hamburger" onclick="document.getElementById('dashSide').classList.add('open')">
+              <svg><use href="#i-menu"/></svg>
+            </button>
+            <div>
+              <h1 id="dashTitle">داشبورد</h1>
+              <div class="sub" id="dashSub">خلاصه‌ای از وضعیت مطالعاتی شما</div>
+            </div>
+          </div>
+          <div class="dash-top-actions">
+            <div class="search-dash">
+              <svg><use href="#i-search"/></svg>
+              <input placeholder="جستجو..."/>
+            </div>
+            <button class="icon-btn" onclick="toast('۳ اعلان جدید')">
+              <svg><use href="#i-bell"/></svg>
+            </button>
+            <button class="icon-btn theme-toggle" onclick="toggleTheme()">
+              <svg><use href="#i-moon"/></svg>
+            </button>
+            <div class="avatar av-1" style="width:40px;height:40px;border-radius:11px;font-size:15px;cursor:pointer">م</div>
+          </div>
+        </div>
+
+        <!-- ============ DASH: OVERVIEW ============ -->
+        <div class="dash-view" data-dview="overview">
+          <div class="grid grid-4 mb-4">
+            <div class="card stat-card">
+              <div><div class="sc-lbl">ساعت مطالعه این هفته</div><div class="sc-val">۴۲:۳۰</div><div class="sc-trend up"><svg width="12" height="12"><use href="#i-trend-up"/></svg> ۱۲٪ بیشتر از هفته قبل</div></div>
+              <div class="sc-ic sc-1"><svg><use href="#i-clock"/></svg></div>
+            </div>
+            <div class="card stat-card">
+              <div><div class="sc-lbl">تست حل‌شده این هفته</div><div class="sc-val">۳۸۴</div><div class="sc-trend up"><svg width="12" height="12"><use href="#i-trend-up"/></svg> ۸٪ رشد</div></div>
+              <div class="sc-ic sc-2"><svg><use href="#i-check"/></svg></div>
+            </div>
+            <div class="card stat-card">
+              <div><div class="sc-lbl">میانگین تراز</div><div class="sc-val">۹۸۴۰</div><div class="sc-trend up"><svg width="12" height="12"><use href="#i-trend-up"/></svg> ۱۸۰ تراز</div></div>
+              <div class="sc-ic sc-3"><svg><use href="#i-target"/></svg></div>
+            </div>
+            <div class="card stat-card">
+              <div><div class="sc-lbl">آزمون بعدی</div><div class="sc-val" style="font-size:20px;padding-top:6px">۲۵ مرداد</div><div class="sc-trend down">۴ روز مانده</div></div>
+              <div class="sc-ic sc-4"><svg><use href="#i-edit"/></svg></div>
+            </div>
+          </div>
+
+          <div class="dash-grid dash-cols-3 mb-4">
+            <div class="panel">
+              <div class="panel-head">
+                <div><h3>روند ساعت مطالعه</h3><div class="sub">۴ هفته اخیر</div></div>
+                <select class="text-sm" style="padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--surface-2)">
+                  <option>۴ هفته</option><option>۳ ماه</option>
+                </select>
+              </div>
+              <div class="chart-wrap"><canvas id="lineChart"></canvas></div>
+              <div class="legend">
+                <div class="legend-item"><span class="legend-dot" style="background:#4f46e5"></span> ساعت مطالعه</div>
+                <div class="legend-item"><span class="legend-dot" style="background:#10b981"></span> هدف</div>
+              </div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><h3>توزیع دروس</h3></div>
+              <div class="donut-wrap">
+                <svg width="160" height="160" viewBox="0 0 160 160" id="donut">
+                  <!-- filled by JS -->
+                </svg>
+              </div>
+              <div class="donut-legend" style="margin-top:18px">
+                <div class="dl-row"><span class="dl-dot" style="background:#4f46e5"></span> ریاضی <span class="dl-val">۳۲٪</span></div>
+                <div class="dl-row"><span class="dl-dot" style="background:#7c3aed"></span> فیزیک <span class="dl-val">۲۴٪</span></div>
+                <div class="dl-row"><span class="dl-dot" style="background:#0ea5e9"></span> شیمی <span class="dl-val">۲۰٪</span></div>
+                <div class="dl-row"><span class="dl-dot" style="background:#f59e0b"></span> زیست <span class="dl-val">۱۴٪</span></div>
+                <div class="dl-row"><span class="dl-dot" style="background:#10b981"></span> عمومی <span class="dl-val">۱۰٪</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-grid dash-cols-3">
+            <div class="panel">
+              <div class="panel-head">
+                <div><h3>پیشرفت مباحث</h3><div class="sub">درصد اتمام هر درس</div></div>
+              </div>
+              <div class="prog-row"><div class="prog-row-top"><span>ریاضی — حسابان</span><span>۸۵٪</span></div><div class="prog-track"><div class="prog-fill" style="width:85%;background:var(--grad)"></div></div></div>
+              <div class="prog-row"><div class="prog-row-top"><span>فیزیک — مکانیک</span><span>۷۲٪</span></div><div class="prog-track"><div class="prog-fill" style="width:72%;background:linear-gradient(90deg,#7c3aed,#9333ea)"></div></div></div>
+              <div class="prog-row"><div class="prog-row-top"><span>شیمی — مسائل</span><span>۶۰٪</span></div><div class="prog-track"><div class="prog-fill" style="width:60%;background:linear-gradient(90deg,#0ea5e9,#06b6d4)"></div></div></div>
+              <div class="prog-row"><div class="prog-row-top"><span>زیست — ژنتیک</span><span>۴۵٪</span></div><div class="prog-track"><div class="prog-fill" style="width:45%;background:linear-gradient(90deg,#f59e0b,#f97316)"></div></div></div>
+              <div class="prog-row"><div class="prog-row-top"><span>عربی</span><span>۹۰٪</span></div><div class="prog-track"><div class="prog-fill" style="width:90%;background:linear-gradient(90deg,#10b981,#059669)"></div></div></div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><h3>برنامه امروز</h3><span class="badge badge-primary">۴ وظیفه</span></div>
+              <div class="list-item">
+                <div class="li-ic li-1"><svg><use href="#i-book"/></svg></div>
+                <div class="li-body"><h5>مرور فصل ۳ حسابان</h5><p>۹۰ دقیقه</p></div>
+                <span class="badge badge-success">انجام شد</span>
+              </div>
+              <div class="list-item">
+                <div class="li-ic li-2"><svg><use href="#i-brain"/></svg></div>
+                <div class="li-body"><h5>تست فیزیک موج</h5><p>۴۰ تست</p></div>
+                <span class="badge badge-warning">در حال</span>
+              </div>
+              <div class="list-item">
+                <div class="li-ic li-3"><svg><use href="#i-file"/></svg></div>
+                <div class="li-body"><h5>مطالعه جزوه شیمی آلی</h5><p>۶۰ دقیقه</p></div>
+                <span class="badge badge-info">بعداً</span>
+              </div>
+              <div class="list-item">
+                <div class="li-ic li-4"><svg><use href="#i-clipboard"/></svg></div>
+                <div class="li-body"><h5>ثبت گزارش‌کار</h5><p>پایان روز</p></div>
+                <span class="badge badge-danger">عقب‌افتاده</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ DASH: PLANNER ============ -->
+        <div class="dash-view" data-dview="planner" style="display:none">
+          <div class="panel-head" style="padding:0 4px 20px">
+            <div class="flex items-center gap-3">
+              <button class="icon-btn"><svg><use href="#i-arrow-left"/></svg></button>
+              <div><h3 style="font-size:18px">برنامه هفتگی</h3><div class="sub">۱۹ — ۲۵ مرداد ۱۴۰۴</div></div>
+            </div>
+            <div class="flex gap-2">
+              <button class="btn btn-outline btn-sm">امروز</button>
+              <button class="btn btn-primary btn-sm" onclick="toast('به برنامه اضافه شد')"><svg><use href="#i-plus"/></svg> وظیفه جدید</button>
+            </div>
+          </div>
+          <div class="week-grid">
+            <div class="day-col">
+              <div class="day-head"><div class="dn">شنبه</div><div class="dd">۱۹</div></div>
+              <div class="task t-blue done"><h6>حسابان فصل ۳</h6><span><svg><use href="#i-clock"/></svg> ۸:۰۰ — ۹:۳۰</span></div>
+              <div class="task t-green"><h6>تست فیزیک</h6><span><svg><use href="#i-clock"/></svg> ۱۰:۰۰ — ۱۱:۳۰</span></div>
+              <div class="task t-amber"><h6>شیمی آلی</h6><span><svg><use href="#i-clock"/></svg> ۱۷:۰۰ — ۱۸:۰۰</span></div>
+            </div>
+            <div class="day-col">
+              <div class="day-head today"><div class="dn">یکشنبه</div><div class="dd">۲۰</div></div>
+              <div class="task t-blue"><h6>هندسه تحلیلی</h6><span><svg><use href="#i-clock"/></svg> ۸:۰۰ — ۹:۳۰</span></div>
+              <div class="task t-green"><h6>تست زیست</h6><span><svg><use href="#i-clock"/></svg> ۱۰:۰۰ — ۱۲:۰۰</span></div>
+              <div class="task t-rose"><h6>آزمونک</h6><span><svg><use href="#i-clock"/></svg> ۱۶:۰۰ — ۱۸:۰۰</span></div>
+            </div>
+            <div class="day-col">
+              <div class="day-head"><div class="dn">دوشنبه</div><div class="dd">۲۱</div></div>
+              <div class="task t-blue"><h6>گسسته</h6><span><svg><use href="#i-clock"/></svg> ۸:۰۰ — ۹:۳۰</span></div>
+              <div class="task t-amber"><h6>مرور شیمی</h6><span><svg><use href="#i-clock"/></svg> ۱۰:۰۰ — ۱۱:۰۰</span></div>
+            </div>
+            <div class="day-col">
+              <div class="day-head"><div class="dn">سه‌شنبه</div><div class="dd">۲۲</div></div>
+              <div class="task t-green"><h6>فیزیک موج</h6><span><svg><use href="#i-clock"/></svg> ۸:۰۰ — ۱۰:۰۰</span></div>
+              <div class="task t-blue"><h6>تست حسابان</h6><span><svg><use href="#i-clock"/></svg> ۱۷:۰۰ — ۱۸:۳۰</span></div>
+            </div>
+            <div class="day-col">
+              <div class="day-head"><div class="dn">چهارشنبه</div><div class="dd">۲۳</div></div>
+              <div class="task t-amber"><h6>شیمی مسائل</h6><span><svg><use href="#i-clock"/></svg> ۸:۰۰ — ۹:۳۰</span></div>
+              <div class="task t-green"><h6>تست فیزیک</h6><span><svg><use href="#i-clock"/></svg> ۱۰:۰۰ — ۱۱:۳۰</span></div>
+            </div>
+            <div class="day-col">
+              <div class="day-head"><div class="dn">پنج‌شنبه</div><div class="dd">۲۴</div></div>
+              <div class="task t-blue"><h6>جمع‌بندی</h6><span><svg><use href="#i-clock"/></svg> ۹:۰۰ — ۱۲:۰۰</span></div>
+              <div class="task t-rose"><h6>آزمون جامع</h6><span><svg><use href="#i-clock"/></svg> ۱۶:۰۰ — ۲۰:۰۰</span></div>
+            </div>
+            <div class="day-col">
+              <div class="day-head"><div class="dn">جمعه</div><div class="dd">۲۵</div></div>
+              <div class="task t-blue"><h6>تحلیل آزمون</h6><span><svg><use href="#i-clock"/></svg> ۱۰:۰۰ — ۱۲:۰۰</span></div>
+              <div class="task t-amber"><h6>استراحت</h6><span><svg><use href="#i-clock"/></svg> عصر</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ DASH: REPORT ============ -->
+        <div class="dash-view" data-dview="report" style="display:none">
+          <div class="report-grid">
+            <div class="panel">
+              <div class="panel-head">
+                <div><h3>ثبت گزارش‌کار روزانه</h3><div class="sub">یکشنبه ۲۰ مرداد ۱۴۰۴</div></div>
+                <span class="badge badge-success"><span class="dot-live" style="width:6px;height:6px"></span> امروز</span>
+              </div>
+              <div id="subjectsList">
+                <div class="subject-row">
+                  <select><option>ریاضی — حسابان</option><option>فیزیک</option><option>شیمی</option></select>
+                  <input type="number" placeholder="دقیقه" value="90">
+                  <input type="number" placeholder="تست" value="45">
+                  <button class="del"><svg><use href="#i-trash"/></svg></button>
+                </div>
+                <div class="subject-row">
+                  <select><option>فیزیک — موج</option><option>شیمی</option></select>
+                  <input type="number" placeholder="دقیقه" value="75">
+                  <input type="number" placeholder="تست" value="30">
+                  <button class="del"><svg><use href="#i-trash"/></svg></button>
+                </div>
+                <div class="subject-row">
+                  <select><option>شیمی — آلی</option></select>
+                  <input type="number" placeholder="دقیقه" value="60">
+                  <input type="number" placeholder="تست" value="0">
+                  <button class="del"><svg><use href="#i-trash"/></svg></button>
+                </div>
+              </div>
+              <button class="btn btn-outline btn-sm mt-3" onclick="addSubject()">
+                <svg><use href="#i-plus"/></svg> افزودن درس
+              </button>
+
+              <div class="field mt-4">
+                <label>توضیحات و چالش‌های امروز</label>
+                <textarea placeholder="چه چیزهایی یاد گرفتید؟ کجاها مشکل داشتید؟"></textarea>
+              </div>
+              <div class="field">
+                <label>حالت و روحیه امروز</label>
+                <div class="mood-picker">
+                  <div class="mood selected" onclick="selectMood(this)"><span class="em">😄</span><span>عالی</span></div>
+                  <div class="mood" onclick="selectMood(this)"><span class="em">🙂</span><span>خوب</span></div>
+                  <div class="mood" onclick="selectMood(this)"><span class="em">😐</span><span>معمولی</span></div>
+                  <div class="mood" onclick="selectMood(this)"><span class="em">😕</span><span>ضعیف</span></div>
+                  <div class="mood" onclick="selectMood(this)"><span class="em">😣</span><span>خیلی بد</span></div>
+                </div>
+              </div>
+              <button class="btn btn-primary btn-lg btn-block" onclick="toast('گزارش‌کار شما با موفقیت ثبت شد')">ثبت گزارش‌کار</button>
+            </div>
+
+            <div>
+              <div class="panel mb-4">
+                <h3 style="font-size:16px;margin-bottom:16px">خلاصه امروز</h3>
+                <div class="mini-row"><span class="muted">مجموع مطالعه</span><span class="v">۲۲۵ دقیقه</span></div>
+                <div class="mini-row"><span class="muted">مجموع تست</span><span class="v">۷۵ تست</span></div>
+                <div class="mini-row"><span class="muted">تعداد دروس</span><span class="v">۳ درس</span></div>
+                <div class="mini-row"><span class="muted">بازخورد استاد</span><span class="v" style="color:var(--warning)">در انتظار</span></div>
+              </div>
+              <div class="panel">
+                <h3 style="font-size:16px;margin-bottom:16px">گزارش‌های اخیر</h3>
+                <div class="list-item">
+                  <div class="li-ic li-2"><svg><use href="#i-check"/></svg></div>
+                  <div class="li-body"><h5>شنبه ۱۹ مرداد</h5><p>۳۱۰ دقیقه · ۱۲۰ تست</p></div>
+                  <span class="badge badge-success">تایید شد</span>
+                </div>
+                <div class="list-item">
+                  <div class="li-ic li-2"><svg><use href="#i-check"/></svg></div>
+                  <div class="li-body"><h5>پنج‌شنبه ۱۸ مرداد</h5><p>۲۸۰ دقیقه · ۹۵ تست</p></div>
+                  <span class="badge badge-success">تایید شد</span>
+                </div>
+                <div class="list-item">
+                  <div class="li-ic li-3"><svg><use href="#i-flag"/></svg></div>
+                  <div class="li-body"><h5>چهارشنبه ۱۷ مرداد</h5><p>۱۸۰ دقیقه · ۶۰ تست</p></div>
+                  <span class="badge badge-warning">بازخورد</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ DASH: QBANK ============ -->
+        <div class="dash-view" data-dview="qbank" style="display:none">
+          <div class="panel mb-4">
+            <div class="qb-filters">
+              <select><option>همه دروس</option><option>ریاضی</option><option>فیزیک</option><option>شیمی</option></select>
+              <select><option>همه فصل‌ها</option><option>فصل ۱</option><option>فصل ۲</option></select>
+              <select><option>همه سطوح</option><option>آسان</option><option>متوسط</option><option>دشوار</option></select>
+              <select><option>همه وضعیت‌ها</option><option>پاسخ‌داده</option><option>نزده</option><option>غلط</option></select>
+              <button class="btn btn-primary btn-sm" style="margin-right:auto"><svg><use href="#i-zap"/></svg> شروع تمرین</button>
+            </div>
+          </div>
+          <div class="grid grid-2">
+            <div class="card q-card">
+              <div class="q-meta"><span class="q-tag qt-subject">ریاضی</span><span class="q-tag qt-chapter">مشتق</span><span class="q-tag qt-diff">آسان</span></div>
+              <h4>اگر f(x) = x³ − ۳x باشد، مشتق f در نقطه x=۲ کدام است؟</h4>
+              <div class="q-foot"><span><svg width="13" height="13" style="vertical-align:-2px"><use href="#i-check"/></svg> پاسخ داده شد — صحیح</span><span>۲ دقیقه</span></div>
+            </div>
+            <div class="card q-card">
+              <div class="q-meta"><span class="q-tag qt-subject">فیزیک</span><span class="q-tag qt-chapter">موج</span><span class="q-tag qt-diff med">متوسط</span></div>
+              <h4>طول موج یک موج صوتی با بسامد ۴۴۰ هرتز در هوا تقریباً چند متر است؟</h4>
+              <div class="q-foot"><span style="color:var(--danger)">غلط — مرور کنید</span><span>۳ دقیقه</span></div>
+            </div>
+            <div class="card q-card">
+              <div class="q-meta"><span class="q-tag qt-subject">شیمی</span><span class="q-tag qt-chapter">ترمودینامیک</span><span class="q-tag qt-diff hard">دشوار</span></div>
+              <h4>در واکنش گرماده، علامت ΔH و وضعیت تعادل پس از افزایش دما چگونه است؟</h4>
+              <div class="q-foot"><span class="muted">پاسخ داده نشده</span><span>—</span></div>
+            </div>
+            <div class="card q-card">
+              <div class="q-meta"><span class="q-tag qt-subject">ریاضی</span><span class="q-tag qt-chapter">انتگرال</span><span class="q-tag qt-diff med">متوسط</span></div>
+              <h4>حاصل انتگرال معین ∫₀¹ 2x dx کدام گزینه است؟</h4>
+              <div class="q-foot"><span><svg width="13" height="13" style="vertical-align:-2px"><use href="#i-check"/></svg> پاسخ داده شد — صحیح</span><span>۱ دقیقه</span></div>
+            </div>
+            <div class="card q-card">
+              <div class="q-meta"><span class="q-tag qt-subject">زیست</span><span class="q-tag qt-chapter">ژنتیک</span><span class="q-tag qt-diff hard">دشوار</span></div>
+              <h4>در صفتی با غالبیت ناقص، نسبت فنوتیپی نسل F2 از تلاقی دو والد خالص چیست؟</h4>
+              <div class="q-foot"><span class="muted">پاسخ داده نشده</span><span>—</span></div>
+            </div>
+            <div class="card q-card">
+              <div class="q-meta"><span class="q-tag qt-subject">فیزیک</span><span class="q-tag qt-chapter">الکتریسیته</span><span class="q-tag qt-diff">آسان</span></div>
+              <h4>مقاومت معادل دو مقاومت ۴ و ۶ اهمی موازی چند اهم است؟</h4>
+              <div class="q-foot"><span><svg width="13" height="13" style="vertical-align:-2px"><use href="#i-check"/></svg> صحیح</span><span>۱ دقیقه</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ DASH: EXAMS ============ -->
+        <div class="dash-view" data-dview="exams" style="display:none">
+          <div class="panel-head" style="padding:0 4px 20px">
+            <div><h3 style="font-size:18px">آزمون‌های در دسترس</h3></div>
+            <button class="btn btn-outline btn-sm"><svg><use href="#i-chart"/></svg> کارنامه‌های قبلی</button>
+          </div>
+          <div class="exam-grid">
+            <div class="card exam-card">
+              <span class="ec-status ecs-avail">در دسترس</span>
+              <div class="exam-icon"><svg><use href="#i-edit"/></svg></div>
+              <h4>آزمون جامع ۳</h4>
+              <p>شامل تمام دروس — سطح متوسط</p>
+              <div class="exam-stats">
+                <div class="es">سوالات<b>۱۰۰</b></div>
+                <div class="es">زمان<b>۱۸۰ دقیقه</b></div>
+                <div class="es">شرکت‌کنندگان<b>۲۴۰</b></div>
+              </div>
+              <button class="btn btn-primary btn-block" onclick="showDash('exam-run')">شروع آزمون</button>
+            </div>
+            <div class="card exam-card">
+              <span class="ec-status ecs-done">انجام شده</span>
+              <div class="exam-icon"><svg><use href="#i-award"/></svg></div>
+              <h4>آزمون جامع ۲</h4>
+              <p>کارنامه شما آماده است</p>
+              <div class="exam-stats">
+                <div class="es">تراز شما<b>۹۸۴۰</b></div>
+                <div class="es">درصد<b>۷۸٪</b></div>
+                <div class="es">رتبه<b>۱۲۰</b></div>
+              </div>
+              <button class="btn btn-outline btn-block" onclick="showDash('exam-result')">مشاهده کارنامه</button>
+            </div>
+            <div class="card exam-card">
+              <span class="ec-status ecs-locked"><svg width="11" height="11" style="vertical-align:-1px"><use href="#i-lock"/></svg> قفل</span>
+              <div class="exam-icon"><svg><use href="#i-lock"/></svg></div>
+              <h4>آزمون مبحثی موج</h4>
+              <p>۲۵ مرداد فعال می‌شود</p>
+              <div class="exam-stats">
+                <div class="es">سوالات<b>۴۰</b></div>
+                <div class="es">زمان<b>۶۰ دقیقه</b></div>
+                <div class="es">وضعیت<b>قفل</b></div>
+              </div>
+              <button class="btn btn-outline btn-block" disabled>به‌زودی</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ DASH: EXAM RUN ============ -->
+        <div class="dash-view" data-dview="exam-run" style="display:none">
+          <button class="btn btn-ghost btn-sm mb-4" onclick="showDash('exams')"><svg><use href="#i-arrow-left"/></svg> بازگشت به آزمون‌ها</button>
+          <div class="exam-run">
+            <div class="panel">
+              <div class="panel-head">
+                <div><h3>آزمون جامع ۳</h3><div class="sub">سوال ۷ از ۱۰۰ · فیزیک — موج</div></div>
+                <span class="badge badge-warning"><svg width="12" height="12"><use href="#i-flag"/></svg> نشانه‌گذاری</span>
+              </div>
+              <div class="q-question">
+                ۷. یک موج عرضی با بسامد ۵۰ هرتز در یک ریسمان با سرعت ۲۰۰ متر بر ثانیه منتشر می‌شود. طول موج این موج چند متر است؟
+              </div>
+              <div class="q-option selected" onclick="selectOpt(this)">
+                <span class="opt-letter">۱</span> ۲ متر
+              </div>
+              <div class="q-option" onclick="selectOpt(this)">
+                <span class="opt-letter">۲</span> ۴ متر
+              </div>
+              <div class="q-option" onclick="selectOpt(this)">
+                <span class="opt-letter">۳</span> ۸ متر
+              </div>
+              <div class="q-option" onclick="selectOpt(this)">
+                <span class="opt-letter">۴</span> ۱۰ متر
+              </div>
+              <div class="q-nav-btns">
+                <button class="btn btn-outline"><svg><use href="#i-arrow-left"/></svg> قبلی</button>
+                <button class="btn btn-primary">بعدی <svg style="transform:scaleX(-1)"><use href="#i-arrow-left"/></svg></button>
+              </div>
+            </div>
+            <div>
+              <div class="exam-timer">
+                <div class="et-label">زمان باقی‌مانده</div>
+                <div class="et-time" id="examTimer">۰۲:۴۲:۱۸</div>
+                <div class="mt-3 flex gap-2" style="justify-content:center">
+                  <button class="btn btn-outline btn-sm"><svg><use href="#i-flag"/></svg> نشانه</button>
+                  <button class="btn btn-primary btn-sm" onclick="if(confirm('آزمون را پایان می‌دهید؟')) showDash('exam-result')">پایان</button>
+                </div>
+                <div style="margin-top:18px;padding-top:18px;border-top:1px solid var(--line-2)">
+                  <div class="text-xs muted" style="margin-bottom:10px;display:flex;justify-content:space-between">
+                    <span style="color:var(--success)">پاسخ‌داده: ۶</span>
+                    <span style="color:var(--accent)">نشانه: ۲</span>
+                  </div>
+                  <div class="q-palette" id="qPalette"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ DASH: EXAM RESULT ============ -->
+        <div class="dash-view" data-dview="exam-result" style="display:none">
+          <button class="btn btn-ghost btn-sm mb-4" onclick="showDash('exams')"><svg><use href="#i-arrow-left"/></svg> بازگشت</button>
+          <div class="panel result-hero mb-4">
+            <div class="result-ring">
+              <svg width="160" height="160" viewBox="0 0 160 160">
+                <circle cx="80" cy="80" r="68" fill="none" stroke="var(--line-2)" stroke-width="14"/>
+                <circle cx="80" cy="80" r="68" fill="none" stroke="url(#ringGrad)" stroke-width="14" stroke-linecap="round"
+                  stroke-dasharray="427" stroke-dashoffset="94" transform="rotate(-90 80 80)"/>
+                <defs><linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#4f46e5"/><stop offset="100%" stop-color="#9333ea"/></linearGradient></defs>
+              </svg>
+              <div class="rr-center"><div class="rr-pct">۷۸٪</div><div class="rr-lbl">پاسخ صحیح</div></div>
+            </div>
+            <h2>آزمون جامع ۲ — عملکرد خوب! 🎉</h2>
+            <p>تراز ۹۸۴۰ · رتبه ۱۲۰ از ۲۴۰ شرکت‌کننده · رشد ۱۸۰ ترازی نسبت به آزمون قبل</p>
+            <div class="result-stats">
+              <div class="rs-box"><div class="n" style="color:var(--success)">۷۸</div><div class="l">پاسخ صحیح</div></div>
+              <div class="rs-box"><div class="n" style="color:var(--danger)">۱۴</div><div class="l">پاسخ غلط</div></div>
+              <div class="rs-box"><div class="n" style="color:var(--muted)">۸</div><div class="l">نزده</div></div>
+              <div class="rs-box"><div class="n gradient-text">۹۸۴۰</div><div class="l">تراز</div></div>
+            </div>
+          </div>
+
+          <div class="dash-grid dash-cols-2 mb-4">
+            <div class="panel">
+              <h3 style="font-size:16px;margin-bottom:20px">درصد به تفکیک درس</h3>
+              <div class="chart-wrap" style="height:220px"><canvas id="barChart"></canvas></div>
+            </div>
+            <div class="panel">
+              <h3 style="font-size:16px;margin-bottom:20px">تحلیل نقاط ضعف</h3>
+              <div class="prog-row"><div class="prog-row-top"><span>فیزیک — موج</span><span>۴۵٪</span></div><div class="prog-track"><div class="prog-fill" style="width:45%;background:var(--danger)"></div></div></div>
+              <div class="prog-row"><div class="prog-row-top"><span>شیمی — ترمودینامیک</span><span>۵۵٪</span></div><div class="prog-track"><div class="prog-fill" style="width:55%;background:var(--accent)"></div></div></div>
+              <div class="prog-row"><div class="prog-row-top"><span>ریاضی — مشتق</span><span>۷۰٪</span></div><div class="prog-track"><div class="prog-fill" style="width:70%;background:var(--grad)"></div></div></div>
+              <div class="prog-row"><div class="prog-row-top"><span>زیست — ژنتیک</span><span>۸۵٪</span></div><div class="prog-track"><div class="prog-fill" style="width:85%;background:var(--success)"></div></div></div>
+              <div class="mt-4 card" style="background:var(--primary-50);border:none;padding:16px">
+                <div class="flex items-center gap-2 mb-2"><svg width="18" height="18" style="color:var(--primary)"><use href="#i-zap"/></svg><b style="font-size:14px">توصیه استاد</b></div>
+                <p class="text-sm" style="color:var(--ink-2)">روی مبحث موج فیزیک بیشتر تمرکز کن. پیشنهاد می‌شه ۳ روز پشت سر هم روزی ۲۰ تست از این مبحث بزنی.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <h3 style="font-size:16px;margin-bottom:8px">مرور سوالات</h3>
+            <p class="muted text-sm mb-3">پاسخ‌های صحیح سبز، غلط قرمز و نزده خاکستری مشخص شده‌اند.</p>
+            <div class="table-wrap">
+              <table>
+                <thead><tr><th>#</th><th>درس</th><th>مبحث</th><th>پاسخ شما</th><th>پاسخ صحیح</th><th>وضعیت</th></tr></thead>
+                <tbody>
+                  <tr><td>۱</td><td>ریاضی</td><td>مشتق</td><td>گزینه ۲</td><td>گزینه ۲</td><td><span class="badge badge-success">صحیح</span></td></tr>
+                  <tr><td>۲</td><td>فیزیک</td><td>موج</td><td>گزینه ۳</td><td>گزینه ۲</td><td><span class="badge badge-danger">غلط</span></td></tr>
+                  <tr><td>۳</td><td>شیمی</td><td>آلی</td><td>—</td><td>گزینه ۱</td><td><span class="badge">نزده</span></td></tr>
+                  <tr><td>۴</td><td>زیست</td><td>ژنتیک</td><td>گزینه ۴</td><td>گزینه ۴</td><td><span class="badge badge-success">صحیح</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ DASH: ANALYTICS ============ -->
+        <div class="dash-view" data-dview="analytics" style="display:none">
+          <div class="grid grid-4 mb-4">
+            <div class="card stat-card"><div><div class="sc-lbl">میانگین تراز کلی</div><div class="sc-val">۹۸۴۰</div><div class="sc-trend up"><svg width="12" height="12"><use href="#i-trend-up"/></svg> ۱۸۰</div></div><div class="sc-ic sc-3"><svg><use href="#i-target"/></svg></div></div>
+            <div class="card stat-card"><div><div class="sc-lbl">بهترین رتبه</div><div class="sc-val">۱۲۰</div><div class="sc-trend up">آزمون جامع ۲</div></div><div class="sc-ic sc-1"><svg><use href="#i-award"/></svg></div></div>
+            <div class="card stat-card"><div><div class="sc-lbl">مجموع تست</div><div class="sc-val">۲٬۸۴۰</div><div class="sc-trend up">۱۲٪ رشد</div></div><div class="sc-ic sc-2"><svg><use href="#i-brain"/></svg></div></div>
+            <div class="card stat-card"><div><div class="sc-lbl">ساعت کل مطالعه</div><div class="sc-val">۳۸۴</div><div class="sc-trend up">۲۴ ساعت</div></div><div class="sc-ic sc-4"><svg><use href="#i-clock"/></svg></div></div>
+          </div>
+
+          <div class="dash-grid dash-cols-3 mb-4">
+            <div class="panel">
+              <div class="panel-head"><div><h3>روند تراز آزمون‌ها</h3><div class="sub">۸ آزمون اخیر</div></div></div>
+              <div class="chart-wrap"><canvas id="trendChart"></canvas></div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><h3>عملکرد به تفکیک درس</h3></div>
+              <div class="chart-wrap" style="height:260px"><canvas id="radarChart"></canvas></div>
+            </div>
+          </div>
+
+          <div class="panel">
+            <div class="panel-head"><div><h3>نقشه حرارت مطالعه</h3><div class="sub">۱۵ روز اخیر — رنگ پررنگ‌تر یعنی مطالعه بیشتر</div></div></div>
+            <div class="heatmap" id="heatmap"></div>
+            <div class="flex gap-3 items-center mt-4 text-xs muted" style="justify-content:flex-end">
+              <span>کم</span>
+              <span class="hm-cell" style="width:14px;height:14px"></span>
+              <span class="hm-cell hm-1" style="width:14px;height:14px"></span>
+              <span class="hm-cell hm-2" style="width:14px;height:14px"></span>
+              <span class="hm-cell hm-3" style="width:14px;height:14px"></span>
+              <span class="hm-cell hm-4" style="width:14px;height:14px"></span>
+              <span>زیاد</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ============ DASH: FILES ============ -->
+        <div class="dash-view" data-dview="files" style="display:none">
+          <div class="panel-head" style="padding:0 4px 20px">
+            <div><h3 style="font-size:18px">جزوات و فایل‌های آموزشی</h3></div>
+            <div class="flex gap-2">
+              <select class="text-sm" style="padding:8px 12px;border-radius:10px;border:1px solid var(--line);background:var(--surface)">
+                <option>همه دروس</option><option>ریاضی</option><option>فیزیک</option><option>شیمی</option>
+              </select>
+              <button class="btn btn-primary btn-sm"><svg><use href="#i-upload"/></svg> آپلود</button>
+            </div>
+          </div>
+          <div class="panel">
+            <div class="file-row">
+              <div class="file-ic fi-pdf"><svg><use href="#i-file"/></svg></div>
+              <div class="file-info"><h5>جزوه کامل مشتق و کاربردها</h5><p>ریاضی · ۱۴۰ صفحه · به‌روزرسانی مرداد</p></div>
+              <div class="file-size">۱۲.۴ MB</div>
+              <button class="btn btn-primary btn-sm"><svg><use href="#i-download"/></svg></button>
+            </div>
+            <div class="file-row">
+              <div class="file-ic fi-vid"><svg><use href="#i-video"/></svg></div>
+              <div class="file-info"><h5>ویدئو آموزش موج و ارتعاش</h5><p>فیزیک · ۲ ساعت و ۱۵ دقیقه</p></div>
+              <div class="file-size">۸۴۰ MB</div>
+              <button class="btn btn-primary btn-sm"><svg><use href="#i-play"/></svg></button>
+            </div>
+            <div class="file-row">
+              <div class="file-ic fi-doc"><svg><use href="#i-file"/></svg></div>
+              <div class="file-info"><h5>جزوه شیمی آلی — بخش اول</h5><p>شیمی · ۸۶ صفحه</p></div>
+              <div class="file-size">۸.۲ MB</div>
+              <button class="btn btn-primary btn-sm"><svg><use href="#i-download"/></svg></button>
+            </div>
+            <div class="file-row">
+              <div class="file-ic fi-zip"><svg><use href="#i-file"/></svg></div>
+              <div class="file-info"><h5>پکیج تست‌های طبقه‌بندی‌شده تابستان</h5><p>تمام دروس · ۵۰۰ تست با پاسخ</p></div>
+              <div class="file-size">۲۴.۸ MB</div>
+              <button class="btn btn-primary btn-sm"><svg><use href="#i-download"/></svg></button>
+            </div>
+            <div class="file-row">
+              <div class="file-ic fi-img"><svg><use href="#i-file"/></svg></div>
+              <div class="file-info"><h5>نقشه ذهنی ژنتیک</h5><p>زیست · تصویری با کیفیت بالا</p></div>
+              <div class="file-size">۳.۱ MB</div>
+              <button class="btn btn-primary btn-sm"><svg><use href="#i-download"/></svg></button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     FOOTER (public views)
+     ============================================================ -->
+<footer class="footer" id="siteFooter">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-about">
+        <a class="brand"><span class="brand-mark">ع</span><span class="brand-name">علی هاشمیان<small>پلتفرم منتورا</small></span></a>
+        <p>مشاور و مدرس کنکور، فارغ‌التحصیل و دانشجوی دکتری مهندسی نرم‌افزار دانشگاه صنعتی شریف. همراه شما در مسیر رسیدن به رتبه برتر.</p>
+        <div class="social">
+          <a><svg><use href="#i-telegram"/></svg></a>
+          <a><svg><use href="#i-instagram"/></svg></a>
+          <a><svg><use href="#i-linkedin"/></svg></a>
+          <a><svg><use href="#i-github"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h5>دسترسی سریع</h5>
+        <ul>
+          <li><a onclick="showView('home')">خانه</a></li>
+          <li><a onclick="showView('resume')">رزومه</a></li>
+          <li><a onclick="showView('services')">خدمات</a></li>
+          <li><a onclick="showView('articles')">مقالات</a></li>
+          <li><a onclick="showView('contact')">تماس</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>پنل دانش‌آموزی</h5>
+        <ul>
+          <li><a onclick="showView('login')">ورود / ثبت‌نام</a></li>
+          <li><a onclick="showView('login')">برنامه هفتگی</a></li>
+          <li><a onclick="showView('login')">آزمون آنلاین</a></li>
+          <li><a onclick="showView('login')">بانک تست</a></li>
+          <li><a onclick="showView('login')">جزوات</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>تماس</h5>
+        <ul>
+          <li class="flex items-center gap-2" style="color:var(--muted)"><svg width="15" height="15"><use href="#i-phone"/></svg> ۰۹۱۲ ۰۰۰ ۰۰۰۰</li>
+          <li class="flex items-center gap-2" style="color:var(--muted)"><svg width="15" height="15"><use href="#i-mail"/></svg> ali@hashemian.dev</li>
+          <li class="flex items-center gap-2" style="color:var(--muted)"><svg width="15" height="15"><use href="#i-pin"/></svg> تهران، شریف</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© ۱۴۰۴ علی هاشمیان — تمامی حقوق محفوظ است.</span>
+      <span>طراحی و توسعه با ❤️ توسط منتورا</span>
+    </div>
+  </div>
+</footer>
+
+<!-- back to top -->
+<button class="back-top" id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+  <svg><use href="#i-arrow-up"/></svg>
+</button>
+
+<!-- toast -->
+<div class="toast" id="toast">
+  <svg><use href="#i-check"/></svg>
+  <span id="toastMsg">انجام شد</span>
+</div>
+
+<script>
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+const publicViews = ['home','resume','services','articles','article','contact','login','verify'];
+
+function showView(name){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  const el = document.getElementById('view-'+name);
+  if(el) el.classList.add('active');
+
+  // nav active state
+  document.querySelectorAll('[data-nav]').forEach(a=>{
+    a.classList.toggle('active', a.dataset.nav===name);
+  });
+
+  // show/hide public chrome (nav, footer)
+  const isDash = name==='dashboard';
+  const isAuth = name==='login'||name==='verify';
+  document.getElementById('nav').style.display = isAuth ? 'none' : '';
+  document.getElementById('siteFooter').style.display = (isAuth||isDash) ? 'none' : '';
+
+  window.scrollTo({top:0,behavior:'instant'});
+
+  // init per-view
+  if(name==='resume') animateSkills();
+  if(name==='articles') renderArticles();
+  if(name==='dashboard'){ showDash('overview'); setTimeout(initDashCharts,50); }
+}
+
+function enterDashboard(){ showView('dashboard'); }
+
+function showDash(name){
+  document.querySelectorAll('.dash-view').forEach(v=>v.style.display='none');
+  const view = document.querySelector('.dash-view[data-dview="'+name+'"]');
+  if(view) view.style.display='block';
+  document.querySelectorAll('[data-dash]').forEach(a=>{
+    a.classList.toggle('active', a.dataset.dash===name);
+  });
+  const titles = {
+    overview:['داشبورد','خلاصه‌ای از وضعیت مطالعاتی شما'],
+    planner:['برنامه هفتگی','برنامه مطالعاتی این هفته شما'],
+    report:['گزارش‌کار روزانه','عملکرد امروز خود را ثبت کنید'],
+    qbank:['بانک تست','تمرین هدفمند بر اساس مبحث و دشتی'],
+    exams:['آزمون‌ها','آزمون‌های آنلاین در دسترس'],
+    'exam-run':['آزمون جامع ۳','پاسخ‌دهی به سوالات'],
+    'exam-result':['کارنامه آزمون','تحلیل کامل عملکرد شما'],
+    analytics:['تحلیل پیشرفت','نمودارها و آمار عملکرد'],
+    files:['جزوات و فایل‌ها','منابع آموزشی اختصاصی']
+  };
+  const t = titles[name]||['',''];
+  document.getElementById('dashTitle').textContent=t[0];
+  document.getElementById('dashSub').textContent=t[1];
+  // close mobile side
+  document.getElementById('dashSide').classList.remove('open');
+  window.scrollTo({top:0,behavior:'smooth'});
+
+  if(name==='exam-run') initExamRun();
+  if(name==='exam-result') setTimeout(initResultCharts,50);
+  if(name==='analytics') setTimeout(initAnalyticsCharts,50);
+}
+
+/* mobile menu */
+function toggleMobile(open){
+  document.getElementById('mobileMenu').classList.toggle('open',open);
+}
+
+/* ============================================================
+   THEME
+   ============================================================ */
+function toggleTheme(){
+  const html = document.documentElement;
+  const isDark = html.dataset.theme==='dark';
+  html.dataset.theme = isDark ? 'light':'dark';
+  const targetIcon = isDark ? '#i-moon' : '#i-sun';
+  document.querySelectorAll('.theme-toggle use').forEach(u=>u.setAttribute('href',targetIcon));
+  // clear donut so it redraws with new text colors, then redraw all charts
+  const donut=document.getElementById('donut'); if(donut) donut.innerHTML='';
+  if(document.getElementById('view-dashboard').classList.contains('active')){
+    initDashCharts();
+    initResultCharts();
+    initAnalyticsCharts();
+  }
+}
+
+/* ============================================================
+   NAV SCROLL
+   ============================================================ */
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>20);
+  document.getElementById('backTop').classList.toggle('show',window.scrollY>400);
+});
+
+/* ============================================================
+   TOAST
+   ============================================================ */
+let toastTimer;
+function toast(msg){
+  const t = document.getElementById('toast');
+  document.getElementById('toastMsg').textContent = msg||'انجام شد';
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=>t.classList.remove('show'),2800);
+}
+
+/* ============================================================
+   RESUME SKILL ANIMATION
+   ============================================================ */
+function animateSkills(){
+  setTimeout(()=>{
+    document.querySelectorAll('.skill-bar-fill').forEach(b=>{
+      b.style.width = b.dataset.w+'%';
+    });
+  },100);
+}
+
+/* ============================================================
+   ARTICLES
+   ============================================================ */
+const articles = [
+  {cat:'برنامه‌ریزی',title:'چگونه یک برنامه مطالعاتی واقع‌بینانه تنظیم کنیم؟',desc:'اصول برنامه‌ریزی اصولی و قابل اجرا برای کنکور، از هدف‌گذاری تا توزیع دروس.',date:'۱۵ مرداد',read:'۸ دقیقه',icon:'book'},
+  {cat:'تست‌زنی',title:'۱۰ تکنیک طلایی برای افزایش سرعت تست‌زنی',desc:'روش‌های عملی برای بالا بردن سرعت و دقت در تست‌زنی بدون کاهش کیفیت.',date:'۱۲ مرداد',read:'۶ دقیقه',icon:'zap'},
+  {cat:'روانشناسی کنکور',title:'مدیریت استرس در روزهای پایانی کنکور',desc:'راهکارهای علمی و عملی برای کنترل اضطراب و حفظ تمرکز در هفته‌های آخر.',date:'۸ مرداد',read:'۱۰ دقیقه',icon:'brain'},
+  {cat:'تحلیل آزمون',title:'چطور کارنامه آزمون را درست تحلیل کنیم؟',desc:'از کارنامه آزمون بیشترین بهره را ببرید؛ روش گام‌به‌گام تحلیل نقاط ضعف.',date:'۳ مرداد',read:'۷ دقیقه',icon:'chart'},
+  {cat:'روش مطالعه',title:'مرور فعال و منحنی فراموشی ابینگهاوس',desc:'چرا و چگونه باید مطالب را در زمان‌های مشخص مرور کنیم تا ملکه ذهن شوند.',date:'۲۸ تیر',read:'۹ دقیقه',icon:'edit'},
+  {cat:'فنی و مهندسی',title:'هوش مصنوعی در خدمت آموزش شخصی‌سازی‌شده',desc:'چگونه از داده‌های رفتاری دانش‌آموز برای تجربه یادگیری بهتر استفاده می‌کنیم.',date:'۲۰ تیر',read:'۱۲ دقیقه',icon:'brain'}
+];
+function renderArticles(){
+  const grid = document.getElementById('articlesGrid');
+  if(grid.childElementCount>0) return;
+  const icons=['book','zap','brain','chart','edit','target'];
+  grid.innerHTML = articles.map((a,i)=>`
+    <article class="card article-card card-hover" onclick="showView('article')">
+      <div class="article-img">
+        <svg><use href="#i-${icons[i%icons.length]}"/></svg>
+        <span class="article-cat">${a.cat}</span>
+      </div>
+      <div class="article-body">
+        <div class="article-meta">
+          <span><svg><use href="#i-calendar"/></svg> ${a.date}</span>
+          <span><svg><use href="#i-clock"/></svg> ${a.read}</span>
+        </div>
+        <h3>${a.title}</h3>
+        <p>${a.desc}</p>
+        <div class="article-foot">
+          <span class="read-more">ادامه مطلب <svg style="transform:scaleX(-1);width:14px;height:14px"><use href="#i-arrow-left"/></svg></span>
+        </div>
+      </div>
+    </article>
+  `).join('');
+}
+
+/* ============================================================
+   REPORT interactions
+   ============================================================ */
+function addSubject(){
+  const list = document.getElementById('subjectsList');
+  const row = document.createElement('div');
+  row.className='subject-row';
+  row.innerHTML = `
+    <select><option>درس را انتخاب کنید</option><option>ریاضی</option><option>فیزیک</option><option>شیمی</option><option>زیست</option></select>
+    <input type="number" placeholder="دقیقه" value="">
+    <input type="number" placeholder="تست" value="">
+    <button class="del" onclick="this.parentElement.remove()"><svg><use href="#i-trash"/></svg></button>`;
+  list.appendChild(row);
+}
+function selectMood(el){
+  el.parentElement.querySelectorAll('.mood').forEach(m=>m.classList.remove('selected'));
+  el.classList.add('selected');
+}
+function selectOpt(el){
+  el.parentElement.querySelectorAll('.q-option').forEach(o=>o.classList.remove('selected'));
+  el.classList.add('selected');
+}
+
+/* ============================================================
+   EXAM RUN
+   ============================================================ */
+function initExamRun(){
+  // palette
+  const pal = document.getElementById('qPalette');
+  if(pal.childElementCount>0) return;
+  let html='';
+  for(let i=1;i<=30;i++){
+    let cls='';
+    if(i===7) cls='current';
+    else if(i<=6) cls='answered';
+    else if(i===3||i===5) cls='marked';
+    html += `<div class="qp-cell ${cls}">${i}</div>`;
+  }
+  pal.innerHTML=html;
+  // timer (static demo countdown)
+  let total = 2*3600+42*60+18;
+  clearInterval(window.__examT);
+  window.__examT = setInterval(()=>{
+    total--;
+    if(total<0){clearInterval(window.__examT);return;}
+    const h=String(Math.floor(total/3600)).padStart(2,'0');
+    const m=String(Math.floor((total%3600)/60)).padStart(2,'0');
+    const s=String(total%60).padStart(2,'0');
+    const el=document.getElementById('examTimer');
+    if(el){ el.textContent=`${h}:${m}:${s}`; el.classList.toggle('warn', total<300); }
+  },1000);
+}
+
+/* ============================================================
+   CHARTS (vanilla canvas)
+   ============================================================ */
+function cssVar(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim();}
+
+function setupCanvas(canvas){
+  const dpr = window.devicePixelRatio||1;
+  const rect = canvas.getBoundingClientRect();
+  canvas.width = rect.width*dpr;
+  canvas.height = rect.height*dpr;
+  const ctx = canvas.getContext('2d');
+  ctx.scale(dpr,-1);
+  ctx.translate(0,-rect.height);
+  ctx.font = '12px Vazirmatn';
+  return {ctx,w:rect.width,h:rect.height};
+}
+
+function drawLine(canvasId){
+  const canvas=document.getElementById(canvasId);
+  if(!canvas) return;
+  const {ctx,w,h}=setupCanvas(canvas);
+  const pad={t:20,r:20,b:30,l:40};
+  const cw=w-pad.l-pad.r, ch=h-pad.t-pad.b;
+  const data=[32,28,38,42];
+  const goal=[40,40,40,40];
+  const labels=['هفته ۱','هفته ۲','هفته ۳','هفته ۴'];
+  const max=50;
+  const ink=cssVar('--muted'), line=cssVar('--line-2'), primary=cssVar('--primary'), success=cssVar('--success');
+  ctx.clearRect(0,0,w,h);
+  // grid
+  ctx.strokeStyle=line; ctx.lineWidth=1;
+  for(let i=0;i<=5;i++){
+    const y=pad.t+ch*(i/5);
+    ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(w-pad.r,y);ctx.stroke();
+    ctx.fillStyle=ink; ctx.save();ctx.scale(1,-1);ctx.fillText(Math.round(max-(max*i/5)),4,y+4);ctx.restore();
+  }
+  const x=i=>pad.l+(cw/(data.length-1))*i;
+  const y=v=>pad.t+ch-(v/max)*ch;
+  // goal line (dashed)
+  ctx.strokeStyle=success;ctx.setLineDash([5,5]);ctx.lineWidth=2;
+  ctx.beginPath();goal.forEach((g,i)=>{i?ctx.lineTo(x(i),y(g)):ctx.moveTo(x(i),y(g));});ctx.stroke();
+  ctx.setLineDash([]);
+  // area
+  const grad=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);
+  grad.addColorStop(0,'rgba(79,70,229,.25)');grad.addColorStop(1,'rgba(79,70,229,0)');
+  ctx.fillStyle=grad;
+  ctx.beginPath();
+  data.forEach((v,i)=>{i?ctx.lineTo(x(i),y(v)):ctx.moveTo(x(i),y(v));});
+  ctx.lineTo(x(data.length-1),pad.t+ch);ctx.lineTo(x(0),pad.t+ch);ctx.closePath();ctx.fill();
+  // line
+  ctx.strokeStyle=primary;ctx.lineWidth=3;ctx.lineJoin='round';ctx.lineCap='round';
+  ctx.beginPath();data.forEach((v,i)=>{i?ctx.lineTo(x(i),y(v)):ctx.moveTo(x(i),y(v));});ctx.stroke();
+  // points
+  data.forEach((v,i)=>{ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(x(i),y(v),5,0,7);ctx.fill();
+    ctx.strokeStyle=primary;ctx.lineWidth=2.5;ctx.stroke();});
+  // labels
+  ctx.fillStyle=ink;
+  labels.forEach((l,i)=>{ctx.save();ctx.scale(1,-1);ctx.fillText(l,x(i)-18,-(h-8));ctx.restore();});
+}
+
+function drawDonut(){
+  const svg=document.getElementById('donut');
+  if(!svg||svg.childElementCount>0) return;
+  const data=[{v:32,c:'#4f46e5'},{v:24,c:'#7c3aed'},{v:20,c:'#0ea5e9'},{v:14,c:'#f59e0b'},{v:10,c:'#10b981'}];
+  const r=64,c=2*Math.PI*r, off=0;
+  let cum=0;
+  const ns='http://www.w3.org/2000/svg';
+  data.forEach(d=>{
+    const seg=document.createElementNS(ns,'circle');
+    seg.setAttribute('cx','80');seg.setAttribute('cy','80');seg.setAttribute('r',r);
+    seg.setAttribute('fill','none');seg.setAttribute('stroke',d.c);seg.setAttribute('stroke-width','18');
+    seg.setAttribute('stroke-dasharray',`${(d.v/100)*c} ${c}`);
+    seg.setAttribute('stroke-dashoffset',-cum);
+    seg.setAttribute('transform','rotate(-90 80 80)');
+    seg.style.transition='stroke-dasharray .8s';
+    svg.appendChild(seg);
+    cum+=(d.v/100)*c;
+  });
+  const txt=document.createElementNS(ns,'text');
+  txt.setAttribute('x','80');txt.setAttribute('y','78');txt.setAttribute('text-anchor','middle');
+  txt.setAttribute('font-size','22');txt.setAttribute('font-weight','800');txt.setAttribute('fill',cssVar('--ink'));
+  txt.textContent='۴۲:۳۰';svg.appendChild(txt);
+  const sub=document.createElementNS(ns,'text');
+  sub.setAttribute('x','80');sub.setAttribute('y','98');sub.setAttribute('text-anchor','middle');
+  sub.setAttribute('font-size','11');sub.setAttribute('fill',cssVar('--muted'));
+  sub.textContent='ساعت';svg.appendChild(sub);
+}
+
+function drawBar(canvasId){
+  const canvas=document.getElementById(canvasId);
+  if(!canvas) return;
+  const {ctx,w,h}=setupCanvas(canvas);
+  const pad={t:20,r:10,b:40,l:40};
+  const cw=w-pad.l-pad.r, ch=h-pad.t-pad.b;
+  const data=[{l:'ریاضی',v:85,c:'#4f46e5'},{l:'فیزیک',v:45,c:'#ef4444'},{l:'شیمی',v:65,c:'#0ea5e9'},{l:'زیست',v:85,c:'#10b981'},{l:'عمومی',v:90,c:'#f59e0b'}];
+  const bw=cw/data.length*0.5;
+  const gap=cw/data.length;
+  const ink=cssVar('--muted'),line=cssVar('--line-2');
+  ctx.strokeStyle=line;
+  for(let i=0;i<=5;i++){
+    const y=pad.t+ch*(i/5);
+    ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(w-pad.r,y);ctx.stroke();
+    ctx.fillStyle=ink;ctx.save();ctx.scale(1,-1);ctx.fillText(100-i*20,6,y+4);ctx.restore();
+  }
+  data.forEach((d,i)=>{
+    const x=pad.l+gap*i+(gap-bw)/2;
+    const bh=(d.v/100)*ch;
+    const y=pad.t+ch-bh;
+    const g=ctx.createLinearGradient(0,y,0,y+bh);
+    g.addColorStop(0,d.c);g.addColorStop(1,d.c+'99');
+    ctx.fillStyle=g;
+    roundRect(ctx,x,y,bw,bh,6);ctx.fill();
+    ctx.fillStyle=ink;ctx.save();ctx.scale(1,-1);
+    ctx.fillText(d.l,x+bw/2-16,-(h-12));
+    ctx.fillStyle=d.c;ctx.font='bold 12px Vazirmatn';
+    ctx.fillText(d.v+'٪',x+bw/2-8,-(y-6));
+    ctx.restore();
+  });
+}
+
+function drawTrend(canvasId){
+  const canvas=document.getElementById(canvasId);
+  if(!canvas) return;
+  const {ctx,w,h}=setupCanvas(canvas);
+  const pad={t:20,r:20,b:30,l:44};
+  const cw=w-pad.l-pad.r, ch=h-pad.t-pad.b;
+  const data=[8900,9100,9050,9400,9350,9600,9700,9840];
+  const labels=['آ۱','آ۲','آ۳','آ۴','آ۵','آ۶','آ۷','آ۸'];
+  const min=8700,max=10000;
+  const ink=cssVar('--muted'),line=cssVar('--line-2'),primary=cssVar('--primary');
+  ctx.strokeStyle=line;
+  for(let i=0;i<=4;i++){
+    const y=pad.t+ch*(i/4);
+    ctx.beginPath();ctx.moveTo(pad.l,y);ctx.lineTo(w-pad.r,y);ctx.stroke();
+    ctx.fillStyle=ink;ctx.save();ctx.scale(1,-1);
+    ctx.fillText(Math.round(max-(max-min)*(i/4)),4,y+4);ctx.restore();
+  }
+  const x=i=>pad.l+(cw/(data.length-1))*i;
+  const y=v=>pad.t+ch-((v-min)/(max-min))*ch;
+  const grad=ctx.createLinearGradient(0,pad.t,0,pad.t+ch);
+  grad.addColorStop(0,'rgba(124,58,237,.25)');grad.addColorStop(1,'rgba(124,58,237,0)');
+  ctx.fillStyle=grad;ctx.beginPath();
+  data.forEach((v,i)=>{i?ctx.lineTo(x(i),y(v)):ctx.moveTo(x(i),y(v));});
+  ctx.lineTo(x(data.length-1),pad.t+ch);ctx.lineTo(x(0),pad.t+ch);ctx.closePath();ctx.fill();
+  ctx.strokeStyle=primary;ctx.lineWidth=3;ctx.lineJoin='round';
+  ctx.beginPath();data.forEach((v,i)=>{i?ctx.lineTo(x(i),y(v)):ctx.moveTo(x(i),y(v));});ctx.stroke();
+  data.forEach((v,i)=>{ctx.fillStyle='#fff';ctx.beginPath();ctx.arc(x(i),y(v),4,0,7);ctx.fill();ctx.strokeStyle=primary;ctx.lineWidth=2;ctx.stroke();});
+  ctx.fillStyle=ink;
+  labels.forEach((l,i)=>{ctx.save();ctx.scale(1,-1);ctx.fillText(l,x(i)-8,-(h-8));ctx.restore();});
+}
+
+function drawRadar(canvasId){
+  const canvas=document.getElementById(canvasId);
+  if(!canvas) return;
+  const {ctx,w,h}=setupCanvas(canvas);
+  const cx=w/2, cy=h/2, R=Math.min(w,h)/2-40;
+  const axes=['ریاضی','فیزیک','شیمی','زیست','عمومی','سرعت'];
+  const vals=[85,60,70,85,90,75];
+  const ink=cssVar('--muted'),line=cssVar('--line-2'),primary=cssVar('--primary');
+  const n=axes.length;
+  // rings
+  for(let ring=1;ring<=4;ring++){
+    ctx.beginPath();
+    for(let i=0;i<n;i++){
+      const a=-Math.PI/2+(i/n)*Math.PI*2;
+      const r=R*ring/4;
+      const px=cx+r*Math.cos(a), py=cy+r*Math.sin(a);
+      i?ctx.lineTo(px,py):ctx.moveTo(px,py);
+    }
+    ctx.closePath();ctx.strokeStyle=line;ctx.lineWidth=1;ctx.stroke();
+  }
+  // axes + labels
+  for(let i=0;i<n;i++){
+    const a=-Math.PI/2+(i/n)*Math.PI*2;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(cx+R*Math.cos(a),cy+R*Math.sin(a));
+    ctx.strokeStyle=line;ctx.stroke();
+    const lx=cx+(R+18)*Math.cos(a), ly=cy+(R+18)*Math.sin(a);
+    ctx.fillStyle=ink;ctx.save();ctx.translate(lx,ly);ctx.scale(1,-1);ctx.textAlign='center';ctx.fillText(axes[i],0,0);ctx.restore();
+  }
+  // data
+  ctx.beginPath();
+  vals.forEach((v,i)=>{
+    const a=-Math.PI/2+(i/n)*Math.PI*2;
+    const r=R*(v/100);
+    const px=cx+r*Math.cos(a), py=cy+r*Math.sin(a);
+    i?ctx.lineTo(px,py):ctx.moveTo(px,py);
+  });
+  ctx.closePath();
+  ctx.fillStyle='rgba(79,70,229,.18)';ctx.fill();
+  ctx.strokeStyle=primary;ctx.lineWidth=2.5;ctx.stroke();
+  vals.forEach((v,i)=>{
+    const a=-Math.PI/2+(i/n)*Math.PI*2;
+    const r=R*(v/100);
+    ctx.fillStyle=primary;ctx.beginPath();ctx.arc(cx+r*Math.cos(a),cy+r*Math.sin(a),4,0,7);ctx.fill();
+  });
+}
+
+function roundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);
+  ctx.arcTo(x+w,y,x+w,y+h,r);
+  ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);
+  ctx.arcTo(x,y,x+w,y,r);
+  ctx.closePath();
+}
+
+function initDashCharts(){ drawLine('lineChart'); drawDonut(); }
+function initResultCharts(){ drawBar('barChart'); }
+function initAnalyticsCharts(){ drawTrend('trendChart'); drawRadar('radarChart'); buildHeatmap(); }
+
+function buildHeatmap(){
+  const hm=document.getElementById('heatmap');
+  if(hm.childElementCount>0) return;
+  let html='<div></div>';
+  for(let i=1;i<=15;i++) html+=`<div class="hm-label">${i}</div>`;
+  const days=['ش','ی','د','س','چ','پ','ج'];
+  days.forEach(d=>{
+    html+=`<div class="hm-day">${d}</div>`;
+    for(let i=0;i<15;i++){
+      const lvl=Math.floor(Math.random()*5);
+      html+=`<div class="hm-cell ${lvl?'hm-'+lvl:''}" title="روز ${i+1}"></div>`;
+    }
+  });
+  hm.innerHTML=html;
+}
+
+/* redraw charts on resize */
+window.addEventListener('resize',()=>{
+  if(document.getElementById('view-dashboard').classList.contains('active')){
+    initDashCharts();
+    setTimeout(()=>{initResultCharts();initAnalyticsCharts();},80);
+  }
+});
+
+/* OTP auto-focus */
+document.querySelectorAll('#otpInputs input').forEach((inp,i,arr)=>{
+  inp.addEventListener('input',()=>{
+    if(inp.value && i<arr.length-1) arr[i+1].focus();
+  });
+  inp.addEventListener('keydown',e=>{
+    if(e.key==='Backspace' && !inp.value && i>0) arr[i-1].focus();
+  });
+});
+
+/* chip toggle (articles filters) */
+document.querySelectorAll('.chip').forEach(c=>{
+  c.addEventListener('click',()=>{
+    c.parentElement.querySelectorAll('.chip').forEach(x=>x.classList.remove('active'));
+    c.classList.add('active');
+  });
+});
+
+/* init */
+animateSkills();
+</script>
+</body>
+</html>
