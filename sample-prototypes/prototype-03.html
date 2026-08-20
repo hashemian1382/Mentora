@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نمونه اولیه ۰۳ — آزمون آنلاین | Mentora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Vazirmatn", "system-ui", "sans-serif"] },
+            colors: {
+              ink: "#2A1A1E",
+              blush: {
+                50: "#fdf5f6",
+                100: "#fbeaec",
+                200: "#f6d3d8",
+                300: "#eeadb6",
+                400: "#e27f8d",
+                500: "#d24f62",
+                600: "#bd3549",
+                700: "#9e2a3b",
+                800: "#832633",
+                900: "#6f2330",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body { font-family: "Vazirmatn", system-ui, sans-serif; }
+    </style>
+  </head>
+
+  <body class="bg-[#fdf8f8] text-ink antialiased">
+    <div class="max-w-6xl mx-auto px-6 py-8">
+      <!-- Top bar -->
+      <header class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-blush-600 text-white grid place-items-center text-lg font-bold shadow-sm shadow-blush-300">م</div>
+          <div>
+            <p class="text-[11px] tracking-[0.2em] text-blush-600 font-semibold">نمونهٔ اولیه ۰۳ / ۰۴</p>
+            <h1 class="text-lg font-extrabold tracking-tight">آزمون میان‌ترم ریاضی · سری الف</h1>
+          </div>
+        </div>
+        <div class="flex items-center gap-6">
+          <div class="text-start">
+            <p class="text-[11px] text-ink/45">زمان باقی‌مانده</p>
+            <p class="text-2xl font-extrabold tabular-nums tracking-tight" dir="ltr">00:42:18</p>
+          </div>
+          <button class="bg-blush-600 text-white text-sm font-medium px-5 py-2.5 rounded-full hover:bg-blush-700">پایان آزمون</button>
+        </div>
+      </header>
+
+      <!-- Progress -->
+      <div class="mb-6">
+        <div class="flex items-center justify-between text-xs text-ink/50 mb-2">
+          <span>سؤال ۷ از ۲۰</span>
+          <span>۳۵٪ تکمیل شده</span>
+        </div>
+        <div class="h-1.5 rounded-full bg-ink/10">
+          <div class="h-1.5 rounded-full bg-blush-600" style="width: 35%"></div>
+        </div>
+      </div>
+
+      <div class="grid lg:grid-cols-[1fr_260px] gap-6">
+        <!-- Question card -->
+        <section class="bg-white rounded-3xl border border-ink/[0.06] p-6 md:p-9">
+          <div class="flex items-center justify-between mb-6 text-sm">
+            <span class="bg-blush-50 text-blush-700 rounded-full px-3 py-1 text-xs font-medium">مبحث: مشتق و کاربردهای آن</span>
+            <span class="bg-amber-100 text-amber-700 rounded-full px-3 py-1 text-xs font-medium">سطح متوسط</span>
+          </div>
+
+          <h2 class="text-xl md:text-2xl font-bold leading-relaxed mb-8">اگر تابع f(x) = 2x² − 3x + 1 باشد، مقدار f(3) − f(1) کدام است؟</h2>
+
+          <div class="space-y-3">
+            <label class="flex items-center gap-4 border border-ink/10 rounded-2xl px-5 py-4 cursor-pointer hover:border-blush-400 transition">
+              <input type="radio" name="q" class="w-4 h-4 accent-blush-600" />
+              <span class="font-medium tabular-nums">۱۰</span>
+            </label>
+            <label class="flex items-center gap-4 border-2 border-blush-600 bg-blush-50 rounded-2xl px-5 py-4 cursor-pointer">
+              <input type="radio" name="q" class="w-4 h-4 accent-blush-600" checked />
+              <span class="font-medium tabular-nums">۱۲</span>
+              <span class="ms-auto text-xs text-blush-700 font-medium">انتخاب شما</span>
+            </label>
+            <label class="flex items-center gap-4 border border-ink/10 rounded-2xl px-5 py-4 cursor-pointer hover:border-blush-400 transition">
+              <input type="radio" name="q" class="w-4 h-4 accent-blush-600" />
+              <span class="font-medium tabular-nums">۱۴</span>
+            </label>
+            <label class="flex items-center gap-4 border border-ink/10 rounded-2xl px-5 py-4 cursor-pointer hover:border-blush-400 transition">
+              <input type="radio" name="q" class="w-4 h-4 accent-blush-600" />
+              <span class="font-medium tabular-nums">۱۶</span>
+            </label>
+          </div>
+
+          <div class="flex items-center justify-between mt-8 pt-6 border-t border-ink/[0.06]">
+            <button class="text-sm font-medium text-ink/50 hover:text-ink">→ قبلی</button>
+            <button class="bg-ink text-white text-sm font-medium px-6 py-3 rounded-full">سؤال بعدی ←</button>
+          </div>
+        </section>
+
+        <!-- Navigator -->
+        <aside class="bg-white rounded-3xl border border-ink/[0.06] p-6 h-fit">
+          <h3 class="font-bold mb-1">نقشهٔ سؤالات</h3>
+          <p class="text-[11px] text-ink/45 mb-4">وضعیت پاسخ‌گویی به هر سؤال</p>
+          <div class="grid grid-cols-5 gap-2">
+            <span class="aspect-square grid place-items-center rounded-xl bg-blush-600 text-white text-xs font-bold">۱</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-blush-600 text-white text-xs font-bold">۲</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-blush-600 text-white text-xs font-bold">۳</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-blush-600 text-white text-xs font-bold">۴</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-blush-600 text-white text-xs font-bold">۵</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-blush-600 text-white text-xs font-bold">۶</span>
+            <span class="aspect-square grid place-items-center rounded-xl border-2 border-blush-600 bg-blush-50 text-blush-700 text-xs font-bold">۷</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-ink/[0.05] text-ink/50 text-xs">۸</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-ink/[0.05] text-ink/50 text-xs">۹</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-ink/[0.05] text-ink/50 text-xs">۱۰</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-ink/[0.05] text-ink/50 text-xs">۱۱</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-ink/[0.05] text-ink/50 text-xs">۱۲</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-ink/[0.05] text-ink/50 text-xs">۱۳</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-ink/[0.05] text-ink/50 text-xs">۱۴</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-ink/[0.05] text-ink/50 text-xs">۱۵</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-ink/[0.05] text-ink/50 text-xs">۱۶</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-ink/[0.05] text-ink/50 text-xs">۱۷</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-ink/[0.05] text-ink/50 text-xs">۱۸</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-ink/[0.05] text-ink/50 text-xs">۱۹</span>
+            <span class="aspect-square grid place-items-center rounded-xl bg-ink/[0.05] text-ink/50 text-xs">۲۰</span>
+          </div>
+          <div class="mt-6 pt-5 border-t border-ink/[0.06] space-y-2 text-[11px] text-ink/50">
+            <p class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-blush-600 inline-block"></span> پاسخ داده شده</p>
+            <p class="flex items-center gap-2"><span class="w-3 h-3 rounded border-2 border-blush-600 inline-block"></span> سؤال جاری</p>
+            <p class="flex items-center gap-2"><span class="w-3 h-3 rounded bg-ink/10 inline-block"></span> بدون پاسخ</p>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Footer nav -->
+      <footer class="flex items-center justify-between mt-8 text-sm">
+        <a href="prototype-02.html" class="font-medium text-blush-700 hover:underline">→ نمونهٔ قبلی</a>
+        <span class="text-ink/40">نمونهٔ اولیه ۰۳ / ۰۴ · Mentora</span>
+        <a href="prototype-04.html" class="font-medium text-blush-700 hover:underline">نمونهٔ بعدی ←</a>
+      </footer>
+    </div>
+  </body>
+</html>

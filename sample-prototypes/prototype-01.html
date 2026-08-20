@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نمونه اولیه ۰۱ — داشبورد تحلیلی | Mentora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Vazirmatn", "system-ui", "sans-serif"] },
+            colors: {
+              ink: "#211D33",
+              brand: {
+                50: "#f4f3ff",
+                100: "#e9e7ff",
+                200: "#d5d1ff",
+                300: "#b6adff",
+                400: "#9380ff",
+                500: "#6d54f5",
+                600: "#5b3ae0",
+                700: "#4d2fc0",
+                800: "#40289c",
+                900: "#36257e",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body { font-family: "Vazirmatn", system-ui, sans-serif; }
+    </style>
+  </head>
+
+  <body class="bg-[#f7f6fb] text-ink antialiased">
+    <div class="min-h-screen md:grid md:grid-cols-[248px_1fr]">
+      <!-- Sidebar -->
+      <aside class="hidden md:flex flex-col justify-between sticky top-0 h-screen bg-white border-e border-ink/5 p-6">
+        <div>
+          <div class="flex items-center gap-3 mb-10">
+            <div class="w-10 h-10 rounded-2xl bg-brand-600 text-white grid place-items-center text-lg font-bold shadow-sm shadow-brand-300">م</div>
+            <div>
+              <div class="font-extrabold tracking-tight leading-none">منتورا</div>
+              <div class="text-[11px] text-ink/45 mt-1">پنل یادگیری</div>
+            </div>
+          </div>
+
+          <nav class="space-y-1 text-sm">
+            <a class="flex items-center gap-3 rounded-xl px-3 py-2.5 bg-brand-50 text-brand-700 font-medium">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+              نمای کلی
+            </a>
+            <a href="prototype-02.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-ink/60 hover:bg-ink/[0.04]">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="4" width="18" height="17" rx="3"/><path d="M8 2v4M16 2v4M3 10h18"/></svg>
+              برنامه‌ریزی
+            </a>
+            <a href="prototype-03.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-ink/60 hover:bg-ink/[0.04]">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 3H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/><path d="M19 3h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2Z"/><path d="M9 13H5a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Z"/><path d="M19 13h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2v-4a2 2 0 0 0-2-2Z"/></svg>
+              آزمون‌ها
+            </a>
+            <a href="prototype-04.html" class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-ink/60 hover:bg-ink/[0.04]">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></svg>
+              بانک سوال
+            </a>
+            <a class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-ink/60 hover:bg-ink/[0.04]">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 15l4-6 3 3 5-8"/></svg>
+              کارنامه
+            </a>
+            <a class="flex items-center gap-3 rounded-xl px-3 py-2.5 text-ink/60 hover:bg-ink/[0.04]">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1Z"/></svg>
+              تنظیمات
+            </a>
+          </nav>
+        </div>
+
+        <div class="rounded-2xl bg-brand-50 p-4">
+          <p class="text-xs text-ink/50 mb-2">برنامهٔ امروز</p>
+          <p class="text-sm font-medium leading-6">۳ کار باقی‌مانده · آخرین گزارش ساعت ۲۱ ثبت شود.</p>
+          <a href="prototype-02.html" class="mt-3 inline-block text-xs font-medium text-brand-700 hover:underline">مشاهدهٔ برنامه‌ریزی ←</a>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main class="p-6 md:p-10">
+        <div class="max-w-6xl mx-auto">
+          <!-- Top bar -->
+          <div class="flex items-center justify-between mb-8">
+            <div>
+              <p class="text-[11px] tracking-[0.2em] text-brand-500 font-semibold mb-2">نمونهٔ اولیه ۰۱ / ۰۴</p>
+              <h1 class="text-3xl font-extrabold tracking-tight">نمای کلی</h1>
+              <p class="text-sm text-ink/50 mt-2">خلاصهٔ عملکرد و روند پیشرفت تحصیلی در یک نگاه.</p>
+            </div>
+            <div class="text-start hidden sm:block">
+              <p class="text-sm font-medium">چهارشنبه، ۲۹ مرداد</p>
+              <p class="text-xs text-ink/45 mt-1">هفتهٔ ۳۴ برنامه</p>
+            </div>
+          </div>
+
+          <!-- KPI cards -->
+          <section class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white rounded-2xl p-5 border border-ink/5">
+              <p class="text-xs text-ink/45 mb-3">میانگین تراز</p>
+              <p class="text-3xl font-extrabold tracking-tight">۶٬۸۴۰</p>
+              <p class="text-xs font-medium text-emerald-600 mt-2">▲ ۳۲۰+ نسبت به آزمون قبل</p>
+            </div>
+            <div class="bg-white rounded-2xl p-5 border border-ink/5">
+              <p class="text-xs text-ink/45 mb-3">ساعت مطالعه</p>
+              <p class="text-3xl font-extrabold tracking-tight">۲۴٫۵</p>
+              <p class="text-xs font-medium text-emerald-600 mt-2">▲ ۱۲٪ نسبت به هفتهٔ قبل</p>
+            </div>
+            <div class="bg-white rounded-2xl p-5 border border-ink/5">
+              <p class="text-xs text-ink/45 mb-3">آزمون‌های تکمیل‌شده</p>
+              <p class="text-3xl font-extrabold tracking-tight">۱۸</p>
+              <p class="text-xs font-medium text-emerald-600 mt-2">▲ ۳ آزمون این ماه</p>
+            </div>
+            <div class="bg-white rounded-2xl p-5 border border-ink/5">
+              <p class="text-xs text-ink/45 mb-3">دقت پاسخ‌گویی</p>
+              <p class="text-3xl font-extrabold tracking-tight">۸۷٪</p>
+              <p class="text-xs font-medium text-emerald-600 mt-2">▲ ۲٪ بهبود مستمر</p>
+            </div>
+          </section>
+
+          <!-- Chart + side -->
+          <section class="grid lg:grid-cols-[1fr_320px] gap-6">
+            <article class="bg-white rounded-2xl p-6 border border-ink/5">
+              <div class="flex items-center justify-between mb-6">
+                <h2 class="font-bold">روند تراز در ۱۲ هفتهٔ اخیر</h2>
+                <span class="text-xs text-ink/45 bg-ink/[0.04] rounded-full px-3 py-1">پایهٔ دوازدهم</span>
+              </div>
+              <svg viewBox="0 0 600 220" class="w-full h-56" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="area" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0" stop-color="#6d54f5" stop-opacity="0.22" />
+                    <stop offset="1" stop-color="#6d54f5" stop-opacity="0" />
+                  </linearGradient>
+                </defs>
+                <g stroke="#e9e7ff" stroke-width="1">
+                  <line x1="0" y1="40" x2="600" y2="40" />
+                  <line x1="0" y1="90" x2="600" y2="90" />
+                  <line x1="0" y1="140" x2="600" y2="140" />
+                  <line x1="0" y1="190" x2="600" y2="190" />
+                </g>
+                <path d="M0,180 L54,170 L108,176 L162,152 L216,140 L270,158 L324,134 L378,116 L432,122 L486,104 L540,96 L594,88 L594,220 L0,220 Z" fill="url(#area)" />
+                <path d="M0,180 L54,170 L108,176 L162,152 L216,140 L270,158 L324,134 L378,116 L432,122 L486,104 L540,96 L594,88" fill="none" stroke="#6d54f5" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="594" cy="88" r="5" fill="#6d54f5" stroke="#fff" stroke-width="2.5" />
+              </svg>
+              <div class="flex justify-between text-[10px] text-ink/35 mt-2">
+                <span>هفتهٔ ۲۳</span><span>هفتهٔ ۲۶</span><span>هفتهٔ ۲۹</span><span>هفتهٔ ۳۲</span><span>هفتهٔ ۳۴</span>
+              </div>
+            </article>
+
+            <div class="space-y-6">
+              <article class="bg-white rounded-2xl p-6 border border-ink/5">
+                <h2 class="font-bold mb-4">فعالیت‌های اخیر</h2>
+                <ul class="space-y-4 text-sm">
+                  <li class="flex items-start gap-3">
+                    <span class="w-2 h-2 rounded-full bg-brand-500 mt-2 shrink-0"></span>
+                    <span class="text-ink/70">آزمون شبیه‌ساز ریاضی — کارنامه صادر شد</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 mt-2 shrink-0"></span>
+                    <span class="text-ink/70">گزارش کار روزانه ثبت شد · ۴٫۵ ساعت</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="w-2 h-2 rounded-full bg-amber-500 mt-2 shrink-0"></span>
+                    <span class="text-ink/70">مرور فصل ۲ فیزیک در انتظار برنامه‌ریزی</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <span class="w-2 h-2 rounded-full bg-rose-400 mt-2 shrink-0"></span>
+                    <span class="text-ink/70">مهلت آزمون هفتگی امشب ساعت ۲۲ پایان می‌یابد</span>
+                  </li>
+                </ul>
+              </article>
+
+              <article class="rounded-2xl p-6 bg-gradient-to-bl from-brand-600 to-brand-800 text-white">
+                <h2 class="font-bold mb-2">هدف این هفته</h2>
+                <p class="text-sm text-white/75 leading-6">پایان مرور فصل‌های ۱ تا ۳ فیزیک و ثبت ۲۵ ساعت مطالعه.</p>
+                <div class="mt-4 h-2 rounded-full bg-white/20">
+                  <div class="h-2 rounded-full bg-white" style="width: 68%"></div>
+                </div>
+                <p class="text-xs text-white/70 mt-2">۶۸٪ تکمیل شده</p>
+              </article>
+            </div>
+          </section>
+
+          <!-- Footer nav -->
+          <footer class="flex items-center justify-between mt-10 pt-6 border-t border-ink/5 text-sm">
+            <span class="text-ink/40">نمونهٔ اولیه ۰۱ / ۰۴ · Mentora</span>
+            <a href="prototype-02.html" class="font-medium text-brand-700 hover:underline">نمونهٔ بعدی ←</a>
+          </footer>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

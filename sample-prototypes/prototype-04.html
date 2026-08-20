@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>نمونه اولیه ۰۴ — بانک سوال | Mentora</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ["Vazirmatn", "system-ui", "sans-serif"] },
+            colors: {
+              ink: "#1F1B16",
+              sand: {
+                50: "#faf6ef",
+                100: "#f4ecdd",
+                200: "#e8d8bb",
+                300: "#d9bf92",
+                400: "#c9a267",
+                500: "#bd8b4a",
+                600: "#a9713c",
+                700: "#8c5a33",
+                800: "#73492f",
+                900: "#5e3d29",
+              },
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body { font-family: "Vazirmatn", system-ui, sans-serif; }
+    </style>
+  </head>
+
+  <body class="bg-[#fbf9f4] text-ink antialiased">
+    <div class="max-w-6xl mx-auto px-6 py-8 md:py-12">
+      <!-- Header -->
+      <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-sand-500 text-white grid place-items-center text-lg font-bold shadow-sm shadow-sand-300">م</div>
+          <div>
+            <div class="font-extrabold tracking-tight leading-none">منتورا</div>
+            <div class="text-[11px] text-ink/45 mt-1">بانک سوال و محتوای آموزشی</div>
+          </div>
+        </div>
+        <button class="bg-ink text-white text-sm font-medium px-5 py-2.5 rounded-full self-start md:self-auto">+ افزودن سؤال</button>
+      </header>
+
+      <!-- Title -->
+      <div class="mb-6">
+        <p class="text-[11px] tracking-[0.2em] text-sand-600 font-semibold mb-2">نمونهٔ اولیه ۰۴ / ۰۴</p>
+        <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">بانک سوال</h1>
+        <p class="text-sm text-ink/50 mt-3">۱۲۸ سؤال فعال در ۵ درس · مرتب‌شده بر اساس آخرین ویرایش.</p>
+      </div>
+
+      <!-- Search + filters -->
+      <section class="bg-white rounded-2xl border border-ink/[0.06] p-4 mb-6">
+        <div class="flex flex-col md:flex-row md:items-center gap-3">
+          <div class="relative flex-1">
+            <svg class="absolute start-4 top-1/2 -translate-y-1/2 text-ink/35" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+            <input type="search" placeholder="جست‌وجو در عنوان یا متن سؤال…" class="w-full rounded-xl bg-ink/[0.04] py-3 ps-11 pe-4 text-sm outline-none focus:ring-2 focus:ring-sand-400" />
+          </div>
+          <div class="flex gap-2 overflow-x-auto">
+            <button class="bg-ink text-white rounded-full px-4 py-2 text-xs font-medium shrink-0">همه</button>
+            <button class="bg-ink/[0.04] rounded-full px-4 py-2 text-xs font-medium shrink-0 hover:bg-ink/[0.08]">ریاضی</button>
+            <button class="bg-ink/[0.04] rounded-full px-4 py-2 text-xs font-medium shrink-0 hover:bg-ink/[0.08]">فیزیک</button>
+            <button class="bg-ink/[0.04] rounded-full px-4 py-2 text-xs font-medium shrink-0 hover:bg-ink/[0.08]">شیمی</button>
+            <button class="bg-ink/[0.04] rounded-full px-4 py-2 text-xs font-medium shrink-0 hover:bg-ink/[0.08]">زیست</button>
+            <button class="bg-ink/[0.04] rounded-full px-4 py-2 text-xs font-medium shrink-0 hover:bg-ink/[0.08]">زبان</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- List -->
+      <section class="space-y-3">
+        <article class="bg-white rounded-2xl border border-ink/[0.06] p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4">
+          <div class="w-11 h-11 rounded-xl bg-sand-100 text-sand-700 grid place-items-center font-extrabold shrink-0">ری</div>
+          <div class="flex-1">
+            <h3 class="font-bold leading-7">اگر f(x) = 2x² − 3x + 1 باشد، مقدار f(3) − f(1) کدام است؟</h3>
+            <p class="text-xs text-ink/45 mt-1">ریاضی · مشتق و کاربرد · پاسخ: ۱۲</p>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="bg-amber-100 text-amber-700 rounded-full px-3 py-1 text-xs">متوسط</span>
+            <span class="text-xs text-ink/40 whitespace-nowrap">ویرایش: ۲ روز پیش</span>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-2xl border border-ink/[0.06] p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4">
+          <div class="w-11 h-11 rounded-xl bg-sand-100 text-sand-700 grid place-items-center font-extrabold shrink-0">ف</div>
+          <div class="flex-1">
+            <h3 class="font-bold leading-7">نیروی خالص وارد بر جسمی با شتاب ثابت در کدام حالت صفر است؟</h3>
+            <p class="text-xs text-ink/45 mt-1">فیزیک · دینامیک · پاسخ: حرکت با سرعت ثابت</p>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="bg-emerald-100 text-emerald-700 rounded-full px-3 py-1 text-xs">آسان</span>
+            <span class="text-xs text-ink/40 whitespace-nowrap">ویرایش: ۵ روز پیش</span>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-2xl border border-ink/[0.06] p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4">
+          <div class="w-11 h-11 rounded-xl bg-sand-100 text-sand-700 grid place-items-center font-extrabold shrink-0">ش</div>
+          <div class="flex-1">
+            <h3 class="font-bold leading-7">کدام ترکیب، یک اسید ضعیف در محلول آبی محسوب می‌شود؟</h3>
+            <p class="text-xs text-ink/45 mt-1">شیمی · اسید و باز · پاسخ: استیک اسید</p>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="bg-rose-100 text-rose-700 rounded-full px-3 py-1 text-xs">دشوار</span>
+            <span class="text-xs text-ink/40 whitespace-nowrap">ویرایش: ۱ هفته پیش</span>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-2xl border border-ink/[0.06] p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4">
+          <div class="w-11 h-11 rounded-xl bg-sand-100 text-sand-700 grid place-items-center font-extrabold shrink-0">ز</div>
+          <div class="flex-1">
+            <h3 class="font-bold leading-7">مترادف واژهٔ «persistent» در متن کدام گزینه است؟</h3>
+            <p class="text-xs text-ink/45 mt-1">زبان · واژگان · پاسخ: tenacious</p>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="bg-amber-100 text-amber-700 rounded-full px-3 py-1 text-xs">متوسط</span>
+            <span class="text-xs text-ink/40 whitespace-nowrap">ویرایش: ۲ هفته پیش</span>
+          </div>
+        </article>
+
+        <article class="bg-white rounded-2xl border border-ink/[0.06] p-5 md:p-6 flex flex-col md:flex-row md:items-center gap-4">
+          <div class="w-11 h-11 rounded-xl bg-sand-100 text-sand-700 grid place-items-center font-extrabold shrink-0">ز</div>
+          <div class="flex-1">
+            <h3 class="font-bold leading-7">در چرخهٔ سلولی، همانندسازی DNA در کدام مرحله رخ می‌دهد؟</h3>
+            <p class="text-xs text-ink/45 mt-1">زیست · تقسیم سلولی · پاسخ: مرحلهٔ S</p>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <span class="bg-emerald-100 text-emerald-700 rounded-full px-3 py-1 text-xs">آسان</span>
+            <span class="text-xs text-ink/40 whitespace-nowrap">ویرایش: ۳ هفته پیش</span>
+          </div>
+        </article>
+      </section>
+
+      <!-- Pagination -->
+      <div class="flex items-center justify-center gap-2 mt-8">
+        <button class="w-9 h-9 rounded-xl border border-ink/10 text-sm text-ink/40">→</button>
+        <button class="w-9 h-9 rounded-xl bg-ink text-white text-sm font-medium">۱</button>
+        <button class="w-9 h-9 rounded-xl border border-ink/10 text-sm text-ink/60 hover:bg-ink/[0.04]">۲</button>
+        <button class="w-9 h-9 rounded-xl border border-ink/10 text-sm text-ink/60 hover:bg-ink/[0.04]">۳</button>
+        <span class="px-1 text-ink/30">…</span>
+        <button class="w-9 h-9 rounded-xl border border-ink/10 text-sm text-ink/60 hover:bg-ink/[0.04]">۱۳</button>
+        <button class="w-9 h-9 rounded-xl border border-ink/10 text-sm text-ink/40">←</button>
+      </div>
+
+      <!-- Footer nav -->
+      <footer class="flex items-center justify-between mt-8 pt-6 border-t border-ink/10 text-sm">
+        <a href="prototype-03.html" class="font-medium text-sand-700 hover:underline">→ نمونهٔ قبلی</a>
+        <span class="text-ink/40">نمونهٔ اولیه ۰۴ / ۰۴ · Mentora</span>
+        <a href="prototype-01.html" class="font-medium text-sand-700 hover:underline">بازگشت به نمونهٔ ۰۱ ←</a>
+      </footer>
+    </div>
+  </body>
+</html>
