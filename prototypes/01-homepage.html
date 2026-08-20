@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mentora — Homepage Prototype</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              ink: "#0B1F33",
+              teal: "#0F766E",
+              gold: "#C9A227",
+              paper: "#F7F4EE",
+            },
+            fontFamily: {
+              sans: ["Georgia", "ui-serif", "serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      body { font-family: "Segoe UI", system-ui, sans-serif; }
+    </style>
+  </head>
+  <body class="bg-paper text-ink">
+    <header class="border-b border-ink/10 bg-white/80 backdrop-blur sticky top-0 z-10">
+      <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-lg bg-teal text-white grid place-items-center font-bold">M</div>
+          <span class="tracking-wide font-semibold">MENTORA</span>
+        </div>
+        <nav class="hidden md:flex items-center gap-7 text-sm text-ink/70">
+          <a href="#resume" class="hover:text-teal">Resume</a>
+          <a href="#services" class="hover:text-teal">Services</a>
+          <a href="#articles" class="hover:text-teal">Articles</a>
+          <a href="#contact" class="hover:text-teal">Contact</a>
+        </nav>
+        <a href="02-student-dashboard.html" class="text-sm bg-ink text-white px-4 py-2 rounded-full">Student Login</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="max-w-6xl mx-auto px-6 py-20 grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <p class="text-teal text-xs tracking-[0.25em] uppercase mb-4">Sample Prototype 01 / 04</p>
+          <h1 class="text-5xl leading-tight font-semibold mb-6">Academic mentoring, study plans, and online exams — in one place.</h1>
+          <p class="text-ink/70 text-lg mb-8">A personal academic platform for instructors: public resume, teaching resources, student mentoring, and a full exam engine.</p>
+          <div class="flex gap-3">
+            <a href="02-student-dashboard.html" class="bg-teal text-white px-5 py-3 rounded-full text-sm">Open student panel</a>
+            <a href="#services" class="border border-ink/20 px-5 py-3 rounded-full text-sm">View services</a>
+          </div>
+        </div>
+        <div class="bg-white rounded-3xl shadow-xl p-8 border border-ink/5">
+          <p class="text-xs uppercase tracking-widest text-ink/40 mb-4">Instructor profile</p>
+          <h2 class="text-2xl font-semibold mb-2">Lead Instructor</h2>
+          <p class="text-ink/60 mb-6">Curriculum design · Mentoring · Assessment</p>
+          <div class="grid grid-cols-3 gap-4 text-center">
+            <div class="bg-paper rounded-2xl py-4"><div class="text-2xl font-semibold">12+</div><div class="text-xs text-ink/50">Years</div></div>
+            <div class="bg-paper rounded-2xl py-4"><div class="text-2xl font-semibold">840</div><div class="text-xs text-ink/50">Students</div></div>
+            <div class="bg-paper rounded-2xl py-4"><div class="text-2xl font-semibold">96%</div><div class="text-xs text-ink/50">Pass rate</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="resume" class="bg-white border-y border-ink/5">
+        <div class="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-8">
+          <article class="p-6 rounded-2xl bg-paper">
+            <h3 class="font-semibold mb-2">Academic background</h3>
+            <p class="text-sm text-ink/60">Placeholder resume block. Replace with degrees, publications, and teaching history.</p>
+          </article>
+          <article class="p-6 rounded-2xl bg-paper">
+            <h3 class="font-semibold mb-2">Teaching focus</h3>
+            <p class="text-sm text-ink/60">Subject tracks, exam preparation, and one-to-one mentoring programs.</p>
+          </article>
+          <article class="p-6 rounded-2xl bg-paper">
+            <h3 class="font-semibold mb-2">Downloads</h3>
+            <p class="text-sm text-ink/60">Lecture notes and sample worksheets will appear in this public file center.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="services" class="max-w-6xl mx-auto px-6 py-16">
+        <h2 class="text-3xl font-semibold mb-8">Services</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-white p-6 rounded-2xl border border-ink/10">
+            <div class="text-gold mb-3 text-sm tracking-widest uppercase">01</div>
+            <h3 class="font-semibold mb-2">Private mentoring</h3>
+            <p class="text-sm text-ink/60">Weekly plans, daily reports, and instructor feedback.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-ink/10">
+            <div class="text-gold mb-3 text-sm tracking-widest uppercase">02</div>
+            <h3 class="font-semibold mb-2">Question bank</h3>
+            <p class="text-sm text-ink/60">Topic-based practice with difficulty levels.</p>
+          </div>
+          <div class="bg-white p-6 rounded-2xl border border-ink/10">
+            <div class="text-gold mb-3 text-sm tracking-widest uppercase">03</div>
+            <h3 class="font-semibold mb-2">Online exams</h3>
+            <p class="text-sm text-ink/60">Timed tests and analytical score reports.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="articles" class="bg-ink text-white">
+        <div class="max-w-6xl mx-auto px-6 py-16">
+          <h2 class="text-3xl font-semibold mb-8">Latest articles</h2>
+          <div class="grid md:grid-cols-2 gap-6">
+            <article class="border border-white/10 rounded-2xl p-6">
+              <p class="text-xs text-gold mb-2">STUDY METHOD</p>
+              <h3 class="text-xl mb-2">How to review a full syllabus in 21 days</h3>
+              <p class="text-sm text-white/60">Sample article card. Content will be replaced later.</p>
+            </article>
+            <article class="border border-white/10 rounded-2xl p-6">
+              <p class="text-xs text-gold mb-2">EXAM PREP</p>
+              <h3 class="text-xl mb-2">Building a personal error notebook</h3>
+              <p class="text-sm text-white/60">Sample article card. Content will be replaced later.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="max-w-6xl mx-auto px-6 py-16">
+        <div class="bg-white rounded-3xl p-8 border border-ink/10 grid md:grid-cols-2 gap-8">
+          <div>
+            <h2 class="text-3xl font-semibold mb-3">Contact</h2>
+            <p class="text-ink/60 text-sm">Placeholder contact form for enrollment and cooperation requests.</p>
+          </div>
+          <form class="space-y-3" onsubmit="event.preventDefault()">
+            <input class="w-full border border-ink/15 rounded-xl px-4 py-3 text-sm" placeholder="Full name" />
+            <input class="w-full border border-ink/15 rounded-xl px-4 py-3 text-sm" placeholder="Phone number" />
+            <textarea class="w-full border border-ink/15 rounded-xl px-4 py-3 text-sm h-24" placeholder="Message"></textarea>
+            <button class="bg-teal text-white px-5 py-3 rounded-xl text-sm">Send message</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="text-center text-xs text-ink/40 py-8">Mentora sample prototype 01 — homepage · no personal names</footer>
+  </body>
+</html>
